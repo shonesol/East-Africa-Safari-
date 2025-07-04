@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>East Africa Safari Adventures - Discover Uganda, Kenya, Tanzania & Rwanda</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://augustinetours.com/wp-content/uploads/2018/08/19576475_l-Zebras-in-Akagera-NP.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .booking-card { 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .attraction-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .stats-counter {
+            animation: countUp 2s ease-out;
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover { color: black; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .gallery-text {
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-globe-africa text-green-600 text-3xl mr-3"></i>
+                    <span class="font-playfair text-2xl font-bold text-gray-800">East Africa Safari</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-green-600 font-medium">Home</a>
+                    <a href="#destinations" class="text-gray-700 hover:text-green-600 font-medium">Destinations</a>
+                    <a href="#wildlife" class="text-gray-700 hover:text-green-600 font-medium">Wildlife</a>
+                    <a href="#mountains" class="text-gray-700 hover:text-green-600 font-medium">Mountains</a>
+                    <a href="#accommodations" class="text-gray-700 hover:text-green-600 font-medium">Accommodations</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-green-600 font-medium">Gallery</a>
+                    <a href="#contact" class="text-gray-700 hover:text-green-600 font-medium">Contact</a>
+                </div>
+                <button onclick="openBookingModal()" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                    Book Safari
+                </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:bg-green-50">Home</a>
+                <a href="#destinations" class="block px-3 py-2 text-gray-700 hover:bg-green-50">Destinations</a>
+                <a href="#wildlife" class="block px-3 py-2 text-gray-700 hover:bg-green-50">Wildlife</a>
+                <a href="#mountains" class="block px-3 py-2 text-gray-700 hover:bg-green-50">Mountains</a>
+                <a href="#accommodations" class="block px-3 py-2 text-gray-700 hover:bg-green-50">Accommodations</a>
+                <a href="#gallery" class="block px-3 py-2 text-gray-700 hover:bg-green-50">Gallery</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:bg-green-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
+        <div class="text-center max-w-4xl mx-auto px-4">
+            <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6">
+                Discover the Magic of East Africa
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+                Experience the breathtaking wildlife, majestic mountains, and luxury accommodations across Uganda, Kenya, Tanzania, and Rwanda
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openBookingModal()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-calendar-alt mr-2"></i>Book Your Safari
+                </button>
+                <button onclick="scrollToSection('wildlife')" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-800 text-white font-bold py-4 px-8 rounded-full transition duration-300">
+                    <i class="fas fa-play mr-2"></i>Watch Wildlife
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="stats-counter">
+                    <div class="text-4xl font-bold text-green-600 mb-2">10,000+</div>
+                    <div class="text-gray-600">Happy Tourists</div>
+                </div>
+                <div class="stats-counter">
+                    <div class="text-4xl font-bold text-green-600 mb-2">500+</div>
+                    <div class="text-gray-600">Wildlife Species</div>
+                </div>
+                <div class="stats-counter">
+                    <div class="text-4xl font-bold text-green-600 mb-2">50+</div>
+                    <div class="text-gray-600">National Parks</div>
+                </div>
+                <div class="stats-counter">
+                    <div class="text-4xl font-bold text-green-600 mb-2">15</div>
+                    <div class="text-gray-600">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Explore East Africa</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover four incredible countries, each offering unique wildlife experiences and cultural adventures 
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://augustinetours.com/wp-content/uploads/2018/08/Giraffe-Akagera-National-Park-Rwanda.jpg" alt="Rwanda" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Rwanda</h3>
+                        <p class="text-gray-600 mb-4">The Land of a Thousand Hills, home to mountain gorillas and stunning landscapes</p>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Volcanoes National Park</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://realmafricasafaris.com/wp-content/uploads/2018/06/Elephant-Queen-Elizbateh-NP.jpg" alt="Uganda" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Uganda</h3>
+                        <p class="text-gray-600 mb-4">The Pearl of Africa, featuring diverse wildlife and the source of the Nile</p>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Queen Elizabeth National Park</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://www.zicasso.com/static/32608b7c98d414d899339bfdcf884c22/28a23/32608b7c98d414d899339bfdcf884c22.jpg" alt="Kenya" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Kenya</h3>
+                        <p class="text-gray-600 mb-4">The birthplace of safari, featuring the Great Migration and Maasai culture</p>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Masai Mara National Reserve</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://www.ugandasafaristours.com/wp-content/uploads/2021/01/30-Days-Rwanda-Uganda-Kenya-Tanzania-Safaria.jpg" alt="Tanzania" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Tanzania</h3>
+                        <p class="text-gray-600 mb-4">Home to Serengeti, Ngorongoro Crater, and Mount Kilimanjaro</p>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Serengeti National Park</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wildlife Section -->
+    <section id="wildlife" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Wildlife Adventures</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Witness the Big Five and over 500 species in their natural habitat
+                </p>
+            </div>
+            
+            <!-- Featured Wildlife Video -->
+            <div class="mb-12">
+                <div class="video-container bg-black rounded-lg overflow-hidden">
+                    <iframe src="https://www.youtube.com/embed/UOr7wlJItPo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="text-center mt-4">
+                    <h3 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Wild Serengeti - Battle for Survival</h3>
+                    <p class="text-gray-600">Experience the untamed world of the Serengeti in this incredible wildlife documentary</p>
+                </div>
+            </div>
+
+            <!-- Wildlife Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://res.cloudinary.com/enchanting/q_70,f_auto,w_3456,h_2304,c_fit/exodus-web/2021/12/lion-and-cub-africa.jpg" alt="Lions" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">The Big Five</h3>
+                        <p class="text-gray-600 mb-4">Lion, Leopard, Elephant, Buffalo, and Rhino - the most sought-after animals on safari</p>
+                        <button onclick="openWildlifeModal('bigfive')" class="text-green-600 font-semibold hover:text-green-700">
+                            <i class="fas fa-eye mr-2"></i>View Details
+                        </button>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://ecolodgesanywhere.com/wp-content/uploads/2025/05/African-Safari-animals-900x500.jpg" alt="Safari Animals" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Safari Wildlife</h3>
+                        <p class="text-gray-600 mb-4">Zebras, Giraffes, Hippos, Cheetahs, and hundreds of other species</p>
+                        <button onclick="openWildlifeModal('safari')" class="text-green-600 font-semibold hover:text-green-700">
+                            <i class="fas fa-eye mr-2"></i>View Details
+                        </button>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://www.passportandpixels.com/wp-content/uploads/2020/11/Laikipia-Day-3_R5-115_pp.jpg" alt="Rare Species" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Rare Species</h3>
+                        <p class="text-gray-600 mb-4">Mountain Gorillas, Wild Dogs, and endangered species conservation</p>
+                        <button onclick="openWildlifeModal('rare')" class="text-green-600 font-semibold hover:text-green-700">
+                            <i class="fas fa-eye mr-2"></i>View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Wildlife Videos -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <div class="video-container bg-black rounded-lg overflow-hidden">
+                        <iframe src="https://www.youtube.com/embed/eoTKXtrRjmY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="text-center mt-4">
+                        <h4 class="font-bold text-gray-800">Wild Kenya - Diverse Nature</h4>
+                    </div>
+                </div>
+                <div>
+                    <div class="video-container bg-black rounded-lg overflow-hidden">
+                        <iframe src="https://www.youtube.com/embed/bKtxyA70G94" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="text-center mt-4">
+                        <h4 class="font-bold text-gray-800">Uganda Travel Documentary</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mountains Section -->
+    <section id="mountains" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Mountain Adventures</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Conquer Africa's highest peaks and experience breathtaking alpine landscapes
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://www.focuseastafricatours.com/wp-content/uploads/mount-kenya-mount-kilimanjaro-climb-1.jpg" alt="Mount Kilimanjaro" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                </div>
+                <div>
+                    <h3 class="font-playfair text-3xl font-bold text-gray-800 mb-6">Mount Kilimanjaro</h3>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        Africa's highest peak at 5,895 meters. Challenge yourself with this iconic climb through diverse ecosystems, from tropical rainforest to arctic summit.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-mountain text-green-600 mr-3"></i>
+                            <span class="font-semibold">Height: 5,895m (19,341ft)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-green-600 mr-3"></i>
+                            <span class="font-semibold">Duration: 5-9 days</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-green-600 mr-3"></i>
+                            <span class="font-semibold">Difficulty: Moderate to Challenging</span>
+                        </div>
+                    </div>
+                    <button onclick="openMountainModal('kilimanjaro')" class="mt-6 bg-green-600 text-white px-8 py-3 rounded-full hover:bg-green-700 transition duration-300">
+                        <i class="fas fa-info-circle mr-2"></i>Learn More
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h3 class="font-playfair text-3xl font-bold text-gray-800 mb-6">Mount Kenya</h3>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        The second-highest peak in Africa at 5,199 meters. Experience technical climbing and stunning alpine scenery in this UNESCO World Heritage site.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-mountain text-green-600 mr-3"></i>
+                            <span class="font-semibold">Height: 5,199m (17,057ft)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-green-600 mr-3"></i>
+                            <span class="font-semibold">Duration: 4-6 days</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-green-600 mr-3"></i>
+                            <span class="font-semibold">Difficulty: Challenging</span>
+                        </div>
+                    </div>
+                    <button onclick="openMountainModal('kenya')" class="mt-6 bg-green-600 text-white px-8 py-3 rounded-full hover:bg-green-700 transition duration-300">
+                        <i class="fas fa-info-circle mr-2"></i>Learn More
+                    </button>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <img src="https://www.go2africa.com/wp-content/uploads/2022/05/shutterstock_1230049867_kili.jpg" alt="Mount Kenya" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                </div>
+            </div>
+
+            <!-- Mountain Climbing Images -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <img src="https://www.wildernesstravel.com/wp-content/uploads/2024/12/10-KILSHIRA-kilimanjaro-climbers-tent-camp-peak.jpg" alt="Kilimanjaro Climbing" class="w-full h-48 object-cover rounded-lg shadow-lg mb-4">
+                    <h4 class="font-bold text-gray-800">Base Camp Experience</h4>
+                    <p class="text-gray-600">Professional guides and mountain equipment</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://www.travelandleisure.com/thmb/DcWPYHrsw_157FYs2yDfJ9SefZY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-heath-moorland-mount-kilimanjaro-tanzania-04-KILIMANJARO1023-c29bd12f91da4659b88ce867d54673d8.jpg" alt="Mountain Landscape" class="w-full h-48 object-cover rounded-lg shadow-lg mb-4">
+                    <h4 class="font-bold text-gray-800">Alpine Ecosystems</h4>
+                    <p class="text-gray-600">Diverse landscapes and unique flora</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://selectadventuresafari.com/wp-content/uploads/2024/03/kilimanjaro-hike-1.jpg" alt="Summit Success" class="w-full h-48 object-cover rounded-lg shadow-lg mb-4">
+                    <h4 class="font-bold text-gray-800">Summit Achievement</h4>
+                    <p class="text-gray-600">Reach the roof of Africa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodations Section -->
+    <section id="accommodations" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Luxury Accommodations</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Stay in world-class safari lodges and luxury camps with unparalleled comfort and service
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://cdn.kiwicollection.com/media/property/PR003172/xl/003172-06-villa-private-plunge-pool-moon-savanna-view.jpg" alt="Safari Lodge" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Safari Lodges</h3>
+                        <p class="text-gray-600 mb-4">Luxury lodges with panoramic views of the African savanna</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">$450/night</span>
+                            <button onclick="openAccommodationModal('lodge')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://cache.marriott.com/content/dam/marriott-digital/jw/emea/hws/n/nbomj/en_us/photo/unlimited/assets/jw-nbomj-honeymoon-tent-17539.jpg" alt="Luxury Tented Camp" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Tented Camps</h3>
+                        <p class="text-gray-600 mb-4">Luxury tented accommodations in the heart of the wilderness</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">$380/night</span>
+                            <button onclick="openAccommodationModal('tented')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2014/04/ngorongoro-crater-lodge-tanzania.jpg" alt="Crater Lodge" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Crater Lodges</h3>
+                        <p class="text-gray-600 mb-4">Exclusive lodges overlooking the Ngorongoro Crater</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">$650/night</span>
+                            <button onclick="openAccommodationModal('crater')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://unforgettabletravel.com/wp-content/uploads/2021/07/Angama-Mara-3.jpg" alt="Boutique Hotel" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Boutique Hotels</h3>
+                        <p class="text-gray-600 mb-4">Intimate luxury hotels with personalized service</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">$520/night</span>
+                            <button onclick="openAccommodationModal('boutique')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://www.south-african-lodges.com/media/tortilis-camp-amboseli-5(1).jpg" alt="Eco Lodge" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Eco Lodges</h3>
+                        <p class="text-gray-600 mb-4">Sustainable luxury accommodations in pristine environments</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">$320/night</span>
+                            <button onclick="openAccommodationModal('eco')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://www.go2africa.com/wp-content/uploads/2016/11/banner-Jabali-Private-House-Exterior-view-and-private-swimming-pool-set-in-the-Baobab-forest--1920x630.jpg" alt="Private Villa" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-gray-800 mb-2">Private Villas</h3>
+                        <p class="text-gray-600 mb-4">Exclusive private accommodations for ultimate privacy</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">$850/night</span>
+                            <button onclick="openAccommodationModal('villa')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Photo Gallery</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore our collection of stunning wildlife and landscape photography
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openImageModal('https://augustinetours.com/wp-content/uploads/2018/08/19576475_l-Zebras-in-Akagera-NP.jpg')">
+                    <img src="https://augustinetours.com/wp-content/uploads/2018/08/19576475_l-Zebras-in-Akagera-NP.jpg" alt="Zebras in Akagera National Park">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Zebras in Akagera National Park, Rwanda</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal('https://www.thewildlifediaries.com/wp-content/uploads/2019/03/Top-African-Safari-Holidays-Destinations-1.jpg')">
+                    <img src="https://www.thewildlifediaries.com/wp-content/uploads/2019/03/Top-African-Safari-Holidays-Destinations-1.jpg" alt="African Safari Scene">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">African Safari Wildlife</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal('https://statics.tpn.to/hero/images/safaris.jpg')">
+                    <img src="https://statics.tpn.to/hero/images/safaris.jpg" alt="Safari Adventure">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Safari Adventure in Rwanda</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal('https://www.passportandpixels.com/wp-content/uploads/2020/11/Laikipia-Day-3_R5-115_pp.jpg')">
+                    <img src="https://www.passportandpixels.com/wp-content/uploads/2020/11/Laikipia-Day-3_R5-115_pp.jpg" alt="Wildlife Photography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Wildlife Photography</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal('https://res.cloudinary.com/enchanting/q_70,f_auto,w_3456,h_2304,c_fit/exodus-web/2021/12/lion-and-cub-africa.jpg')">
+                    <img src="https://res.cloudinary.com/enchanting/q_70,f_auto,w_3456,h_2304,c_fit/exodus-web/2021/12/lion-and-cub-africa.jpg" alt="Lion and Cub">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Lion and Cub in Africa</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal('https://www.focuseastafricatours.com/wp-content/uploads/mount-kenya-mount-kilimanjaro-climb-1.jpg')">
+                    <img src="https://www.focuseastafricatours.com/wp-content/uploads/mount-kenya-mount-kilimanjaro-climb-1.jpg" alt="Mountain Climbing">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Mount Kenya & Kilimanjaro</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">What Our Guests Say</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Read testimonials from travelers who have experienced the magic of East Africa
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "The safari experience was absolutely incredible! We saw all the Big Five and the accommodation was luxurious. The guides were knowledgeable and professional."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
+                            JS
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-gray-800">John Smith</div>
+                            <div class="text-gray-500">New York, USA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "Climbing Mount Kilimanjaro was a life-changing experience. The support team was amazing and the views were breathtaking. Highly recommended!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
+                            MJ
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-gray-800">Maria Johnson</div>
+                            <div class="text-gray-500">London, UK</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "The gorilla trekking in Rwanda was unforgettable. Seeing these magnificent creatures in their natural habitat was emotional and inspiring."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
+                            DS
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-gray-800">David Schmidt</div>
+                            <div class="text-gray-500">Berlin, Germany</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Get In Touch</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to plan your East African adventure? Contact us today for personalized safari planning
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-playfair text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-green-600 text-xl mr-4"></i>
+                            <div>
+                                <div class="font-semibold">Main Office</div>
+                                <div class="text-gray-600">kampala and jinja</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-green-600 text-xl mr-4"></i>
+                            <div>
+                                <div class="font-semibold">Phone</div>
+                                <div class="text-gray-600">+256 759 413 273</div>
+                                <div class="text-gray-600">+256 770 462422</div>
+                                <div class="text-gray-600">+256 759 413 273</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-4"></i>
+                            <div>
+                                <div class="font-semibold">Email</div>
+                                <div class="text-gray-600">shonesol28@gmail.cm</div>
+                                <div     class="text-gray-600">kasoziandrew462@gmail.com</div>                     
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-green-600 text-xl mr-4"></i>
+                            <div>
+                                <div class="font-semibold">Office Hours</div>
+                                <div class="text-gray-600">Mon - sun: 8:00 AM - 6:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-green-600 hover:text-green-700 text-2xl">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-green-600 hover:text-green-700 text-2xl">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-green-600 hover:text-green-700 text-2xl">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-green-600 hover:text-green-700 text-2xl">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-globe-africa text-green-400 text-3xl mr-3"></i>
+                        <span class="font-playfair text-2xl font-bold">East Africa Safari</span>
+                    </div>
+                    <p class="text-gray-300">
+                        Your gateway to unforgettable wildlife adventures and mountain expeditions in East Africa.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#destinations" class="text-gray-300 hover:text-white">Destinations</a></li>
+                        <li><a href="#wildlife" class="text-gray-300 hover:text-white">Wildlife</a></li>
+                        <li><a href="#mountains" class="text-gray-300 hover:text-white">Mountains</a></li>
+                        <li><a href="#accommodations" class="text-gray-300 hover:text-white">Accommodations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Countries</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Kenya</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Tanzania</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Uganda</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Rwanda</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Subscribe to get the latest safari deals and travel tips.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-l-lg text-gray-800">
+                        <button type="submit" class="bg-green-600 px-4 py-2 rounded-r-lg hover:bg-green-700 transition duration-300">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    East Africa Safari Adventures. All rights reserved. | Privacy Policy | Terms & Conditions
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <button class="floating-button bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition-colors duration-300" onclick="openBookingModal()">
+        <i class="fas fa-calendar-plus text-2xl"></i>
+    </button>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2 class="font-playfair text-3xl font-bold mb-6 text-center">Book Your Safari Adventure</h2>
+            <form id="bookingForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Number of Travelers</label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select number</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5+">5+ People</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Destination</label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select destination</option>
+                            <option value="kenya">Kenya</option>
+                            <option value="tanzania">Tanzania</option>
+                            <option value="uganda">Uganda</option>
+                            <option value="rwanda">Rwanda</option>
+                            <option value="multi">Multi-Country</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Experience Type</label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select experience</option>
+                            <option value="wildlife">Wildlife Safari</option>
+                            <option value="mountain">Mountain Climbing</option>
+                            <option value="cultural">Cultural Tours</option>
+                            <option value="luxury">Luxury Safari</option>
+                            <option value="adventure">Adventure Package</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Travel Date</label>
+                        <input type="date" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Duration</label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select duration</option>
+                            <option value="3-days">3 Days</option>
+                            <option value="5-days">5 Days</option>
+                            <option value="7-days">7 Days</option>
+                            <option value="10-days">10 Days</option>
+                            <option value="14-days">14 Days</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Special Requests</label>
+                    <textarea rows="4" placeholder="Any special requirements or requests..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"></textarea>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="bg-green-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        <i class="fas fa-paper-plane mr-2"></i>Submit Booking Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content" style="max-width: 90%; max-height: 90%; padding: 0;">
+            <span class="close" onclick="closeImageModal()" style="position: absolute; top: 10px; right: 20px; z-index: 10; color: white; font-size: 40px;">&times;</span>
+            <img id="modalImage" src="" alt="" style="width: 100%; height: auto; border-radius: 10px;">
+        </div>
+    </div>
+
+    <!-- Wildlife Modal -->
+    <div id="wildlifeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWildlifeModal()">&times;</span>
+            <div id="wildlifeContent"></div>
+        </div>
+    </div>
+
+    <!-- Mountain Modal -->
+    <div id="mountainModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMountainModal()">&times;</span>
+            <div id="mountainContent"></div>
+        </div>
+    </div>
+
+    <!-- Accommodation Modal -->
+    <div id="accommodationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAccommodationModal()">&times;</span>
+            <div id="accommodationContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Site Tracking
+        let visitors = 0;
+        let bookings = 0;
+        let pageViews = 0;
+
+        // Initialize tracking
+        function initTracking() {
+            visitors = parseInt(localStorage.getItem('visitors') || '0') + 1;
+            pageViews = parseInt(localStorage.getItem('pageViews') || '0') + 1;
+            bookings = parseInt(localStorage.getItem('bookings') || '0');
+            
+            localStorage.setItem('visitors', visitors);
+            localStorage.setItem('pageViews', pageViews);
+            
+            console.log(`Visitors: ${visitors}, Page Views: ${pageViews}, Bookings: ${bookings}`);
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Booking Modal Functions
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'block';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        // Image Modal Functions
+        function openImageModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Wildlife Modal Functions
+        function openWildlifeModal(type) {
+            const content = document.getElementById('wildlifeContent');
+            let html = '';
+            
+            switch(type) {
+                case 'bigfive':
+                    html = `
+                        <h2 class="font-playfair text-3xl font-bold mb-6">The Big Five</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <img src="https://res.cloudinary.com/enchanting/q_70,f_auto,w_3456,h_2304,c_fit/exodus-web/2021/12/lion-and-cub-africa.jpg" alt="Lion" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="font-bold text-xl mb-2">African Lion</h3>
+                                <p class="text-gray-600">The king of the jungle, lions are social cats living in prides of 10-15 individuals.</p>
+                            </div>
+                            <div>
+                                <img src="https://realmafricasafaris.com/wp-content/uploads/2018/06/Elephant-Queen-Elizbateh-NP.jpg" alt="Elephant" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="font-bold text-xl mb-2">African Elephant</h3>
+                                <p class="text-gray-600">The largest land mammal, elephants are intelligent giants with complex social structures.</p>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-gray-600">The Big Five originally referred to the five most dangerous animals to hunt on foot in Africa: Lion, Leopard, Elephant, Cape Buffalo, and Rhinoceros. Today, they represent the most sought-after animals for wildlife viewing on safari.</p>
+                    `;
+                    break;
+                case 'safari':
+                    html = `
+                        <h2 class="font-playfair text-3xl font-bold mb-6">Safari Wildlife</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <img src="https://ecolodgesanywhere.com/wp-content/uploads/2025/05/African-Safari-animals-900x500.jpg" alt="Safari Animals" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="font-bold text-xl mb-2">Plains Game</h3>
+                                <p class="text-gray-600">Zebras, giraffes, antelopes, and other herbivores that roam the African savannas.</p>
+                            </div>
+                            <div>
+                                <img src="https://augustinetours.com/wp-content/uploads/2018/08/19576475_l-Zebras-in-Akagera-NP.jpg" alt="Zebras" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="font-bold text-xl mb-2">Zebras</h3>
+                                <p class="text-gray-600">These striped horses are known for their distinctive patterns and social behavior.</p>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-gray-600">East Africa is home to over 500 wildlife species, making it one of the most biodiverse regions on Earth. From the Great Migration to rare endemic species, every safari offers unique wildlife encounters.</p>
+                    `;
+                    break;
+                case 'rare':
+                    html = `
+                        <h2 class="font-playfair text-3xl font-bold mb-6">Rare & Endangered Species</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <img src="https://www.passportandpixels.com/wp-content/uploads/2020/11/Laikipia-Day-3_R5-115_pp.jpg" alt="Rare Wildlife" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="font-bold text-xl mb-2">Mountain Gorillas</h3>
+                                <p class="text-gray-600">Critically endangered with less than 1,000 individuals remaining in the wild.</p>
+                            </div>
+                            <div>
+                                <img src="https://augustinetours.com/wp-content/uploads/2018/08/Giraffe-Akagera-National-Park-Rwanda.jpg" alt="Giraffe" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="font-bold text-xl mb-2">Rothschild's Giraffe</h3>
+                                <p class="text-gray-600">One of the most endangered giraffe subspecies, found primarily in Uganda and Kenya.</p>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-gray-600">Conservation efforts in East Africa are crucial for protecting endangered species. Many national parks and reserves work tirelessly to preserve these magnificent creatures for future generations.</p>
+                    `;
+                    break;
+            }
+            
+            content.innerHTML = html;
+            document.getElementById('wildlifeModal').style.display = 'block';
+        }
+
+        function closeWildlifeModal() {
+            document.getElementById('wildlifeModal').style.display = 'none';
+        }
+
+        // Mountain Modal Functions
+        function openMountainModal(type) {
+            const content = document.getElementById('mountainContent');
+            let html = '';
+            
+            switch(type) {
+                case 'kilimanjaro':
+                    html = `
+                        <h2 class="font-playfair text-3xl font-bold mb-6">Mount Kilimanjaro</h2>
+                        <img src="https://www.focuseastafricatours.com/wp-content/uploads/mount-kenya-mount-kilimanjaro-climb-1.jpg" alt="Kilimanjaro" class="w-full h-64 object-cover rounded-lg mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="font-bold text-xl mb-4">Climbing Routes</h3>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• <strong>Marangu Route:</strong> 5-6 days, hut accommodation</li>
+                                    <li>• <strong>Machame Route:</strong> 6-7 days, camping</li>
+                                    <li>• <strong>Lemosho Route:</strong> 7-8 days, scenic approach</li>
+                                    <li>• <strong>Rongai Route:</strong> 6-7 days, less crowded</li>
+                                    <li>• <strong>Northern Circuit:</strong> 9 days, highest success rate</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-4">What to Expect</h3>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Tropical rainforest zone</li>
+                                    <li>• Moorland and heather zone</li>
+                                    <li>• Alpine desert zone</li>
+                                    <li>• Arctic summit zone</li>
+                                    <li>• Glaciers and ice fields</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                            <h4 class="font-bold text-green-800 mb-2">Package Includes:</h4>
+                            <p class="text-green-700">Professional guides, porters, camping equipment, meals, park fees, and summit certificate.</p>
+                        </div>
+                    `;
+                    break;
+                case 'kenya':
+                    html = `
+                        <h2 class="font-playfair text-3xl font-bold mb-6">Mount Kenya</h2>
+                        <img src="https://www.go2africa.com/wp-content/uploads/2022/05/shutterstock_1230049867_kili.jpg" alt="Mount Kenya" class="w-full h-64 object-cover rounded-lg mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="font-bold text-xl mb-4">Climbing Routes</h3>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• <strong>Sirimon Route:</strong> 4-5 days, most popular</li>
+                                    <li>• <strong>Chogoria Route:</strong> 4-5 days, most scenic</li>
+                                    <li>• <strong>Naro Moru Route:</strong> 3-4 days, direct route</li>
+                                    <li>• <strong>Burguret Route:</strong> 5-6 days, less crowded</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-4">Technical Climbing</h3>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Point Lenana (4,985m) - trekking</li>
+                                    <li>• Nelion (5,188m) - rock climbing</li>
+                                    <li>• Batian (5,199m) - technical climbing</li>
+                                    <li>• Grade III-V rock climbing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                            <h4 class="font-bold text-green-800 mb-2">UNESCO World Heritage Site:</h4>
+                            <p class="text-green-700">Mount Kenya is recognized for its exceptional natural beauty and diverse ecosystems.</p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            content.innerHTML = html;
+            document.getElementById('mountainModal').style.display = 'block';
+        }
+
+        function closeMountainModal() {
+            document.getElementById('mountainModal').style.display = 'none';
+        }
+
+        // Accommodation Modal Functions
+        function openAccommodationModal(type) {
+            const content = document.getElementById('accommodationContent');
+            let html = '';
+            
+            switch(type) {
+                case 'lodge':
+                    html = `
+                        <h2 class="font-playfair text-3xl font-bold mb-6">Safari Lodges</h2>
+                        <img src="https://cdn.kiwicollection.com/media/property/PR003172/xl/003172-06-villa-private-plunge-pool-moon-savanna-view.jpg" alt="Safari Lodge" class="w-full h-64 object-cover rounded-lg mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="font-bold text-xl mb-4">Amenities</h3>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Private plunge pools</li>
+                                    <li>• Panoramic savanna views</li>
+                                    <li>• Gourmet dining</li>
+                                    <li>• Spa services</li>
+                                    <li>• Game viewing decks</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-4">Experiences</h3>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Game drives</li>
+                                    <li>• Bush walks</li>
+                                    <li>• Sundowner cocktails</li>
+                                    <li>• Cultural visits</li>
+                                    <li>• Photography tours</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <button class="bg-green-600 text-white px-8 py-3 rounded-full hover:bg-green-700 transition duration-300">
+                                Book Now - $450/night
+                            </button>
+                        </div>
+                    `;
+                    break;
+                // Add more accommodation types as needed
+                default:
+                    html = `<h2 class="font-playfair text-3xl font-bold mb-6">Accommodation Details</h2><p>Details for this accommodation type will be available soon.</p>`;
+            }
+            
+            content.innerHTML = html;
+            document.getElementById('accommodationModal').style.display = 'block';
+        }
+
+        function closeAccommodationModal() {
+            document.getElementById('accommodationModal').style.display = 'none';
+        }
+
+        // Form Submissions
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Booking request submitted! We will contact you within 24 hours.');
+            bookings++;
+            localStorage.setItem('bookings', bookings);
+            closeBookingModal();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = ['bookingModal', 'imageModal', 'wildlifeModal', 'mountainModal', 'accommodationModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize tracking when page loads
+        window.addEventListener('load', initTracking);
+
+        // Add scroll effects
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
