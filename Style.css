@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 50px;
+  background: #0d3b2e;
+  color: white;
+}
+
+.header a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.hero {
+  height: 100vh;
+  background: url('../images/safari.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.5);
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background: #ff9800;
+  padding: 12px 25px;
+  color: white;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.tours {
+  padding: 50px;
+  text-align: center;
+}
+
+.tour-card {
+  display: inline-block;
+  width: 300px;
+  margin: 15px;
+}
+
+.tour-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.about, .contact {
+  padding: 50px;
+  text-align: center;
+}
