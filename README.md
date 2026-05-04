@@ -1,2 +1,2 @@
-# East-Africa-Safari-
+# pearl-dream-safaris
 Tourists
