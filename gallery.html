@@ -1,1 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pearl Dreams Safaris Video Gallery</title>
+
+<style>
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)),
+
+    url('https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1600');
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+header{
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    background:rgba(0,0,0,0.5);
+
+    backdrop-filter:blur(5px);
+
+}
+
+header h1{
+
+    font-size:2.5rem;
+
+    color:#FFD700;
+
+}
+
+header p{
+
+    margin-top:10px;
+
+    color:#ddd;
+
+}
+
+.back-btn{
+
+    display:inline-block;
+
+    margin:20px;
+
+    padding:12px 24px;
+
+    background:#0f766e;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+
+}
+
+.back-btn:hover{
+
+    background:#14b8a6;
+
+    transform:translateY(-3px);
+
+}
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+
+    gap:25px;
+
+    padding:30px;
+
+}
+
+.video-card{
+
+    background:rgba(255,255,255,0.08);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+    transition:0.4s;
+
+}
+
+.video-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.video-card video{
+
+    width:100%;
+
+    display:block;
+
+    background:black;
+
+    border-bottom:2px solid #FFD700;
+
+}
+
+.video-info{
+
+    padding:15px;
+
+}
+
+.video-info h3{
+
+    color:#FFD700;
+
+    margin-bottom:8px;
+
+}
+
+.video-info p{
+
+    color:#ddd;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+@media(max-width:768px){
+
+    .gallery{
+
+        grid-template-columns:1fr;
+
+        padding:15px;
+
+    }
+
+    header h1{
+
+        font-size:2rem;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎥 Pearl Dreams Safaris Gallery</h1>
+
+    <p>Experience Uganda Through Our Safari Adventures</p>
+
+</header>
+
+<a href="index.html" class="back-btn">← Back Home</a>
+
+<div class="gallery">
+
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="03a8877bfb5e4523a8156d2e6f14aa6b.mov" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Gorilla Trekking Adventure</h3>
+
+            <p>Meet the endangered mountain gorillas in Bwindi Impenetrable Forest.</p>
+
+        </div>
+
+    </div>
+
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="433bbc27-07a0-41da-87f8-59f9f832e1a6.mov">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Wildlife Safari Experience</h3>
+
+            <p>Discover Uganda's incredible wildlife and breathtaking landscapes.</p>
+
+        </div>
+
+    </div>
+
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="c5c740ef-e014-4679-ae05-3e66ca790284.mp4" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Game Drive Adventure</h3>
+
+            <p>Explore national parks in our comfortable safari Land Cruisers.</p>
+
+        </div>
+
+    </div>
+        <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="03dca837-6912-4135-8a0d-689c8e542619.mov">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Wildlife Safari Experience</h3>
+
+            <p>Discover Uganda's incredible wildlife and breathtaking landscapes.</p>
+
+        </div>
+
+    </div>
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="438b09b3-fcfc-4063-8ad7-4dbefec461ed.mov" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Wildlife Safari Experience</h3>
+
+            <p>Discover Uganda's incredible wildlife and breathtaking landscapes.</p>
+
+        </div>
+
+    </div>
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="4585385d-ce57-4d7b-a806-44c9206ba18b.mov" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Wildlife Safari Experience</h3>
+
+            <p>Discover Uganda's incredible wildlife and breathtaking landscapes.</p>
+
+        </div>
+
+    </div>
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="699fcbe8-8465-4745-a641-ddc0854f4f53.mov" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Wildlife Safari Experience</h3>
+
+            <p>Discover Uganda's incredible wildlife and breathtaking landscapes.</p>
+
+        </div>
+
+    </div>
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="b5d8c621-9200-4f56-991d-7672b4cbefd9.mov" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Wildlife Safari Experience</h3>
+
+            <p>Discover Uganda's incredible wildlife and breathtaking landscapes.</p>
+
+        </div>
+
+    </div>
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="f334ad22-fe8a-44dc-a1c5-7d632da6444c.mov" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Wildlife Safari Experience</h3>
+
+            <p>Discover Uganda's incredible wildlife and breathtaking landscapes.</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="video-card">
+
+        <video controls preload="metadata">
+
+            <source src="ce034acf-d338-4311-af36-b5aae88861a4.mp4" type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+        <div class="video-info">
+
+            <h3>Murchison Falls Experience</h3>
+
+            <p>Witness the power and beauty of Uganda's most famous waterfall.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
 
