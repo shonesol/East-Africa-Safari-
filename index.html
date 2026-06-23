@@ -1,1 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEARL DREAMS SAFARIS</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:#f5f7fa;
+}
+/* NAVIGATION */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    background:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    flex-wrap:wrap;
+}
+nav h1{
+color:#0f766e;
+margin:0;
+}
+
+/* HERO */
+.hero{
+height:95vh;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url('e8395a5f-fd72-4199-b374-4e2eeb7b5a2a.jpeg');
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:10px;
+text-shadow:0 3px 10px rgba(0,0,0,.5);
+}
+
+.hero p{
+font-size:22px;
+}
+
+/* BUTTONS */
+.btn{
+background:#0f766e;
+color:white;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+text-decoration:none;
+display:inline-block;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:#115e59;
+transform:translateY(-2px);
+}
+
+section{
+padding:60px 20px;
+text-align:center;
+}
+
+/* DESTINATION CARDS */
+.card{
+background:white;
+padding:20px;
+margin:10px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+display:inline-block;
+width:260px;
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+gap:25px;
+padding:20px;
+}
+
+.gallery-item{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+transition:.4s;
+position:relative;
+}
+
+.gallery-item:hover{
+transform:translateY(-8px);
+}
+
+.gallery-item img{
+width:100%;
+height:320px;
+object-fit:cover;
+transition:.5s;
+border-bottom:4px solid #0f766e;
+}
+
+.gallery-item:hover img{
+transform:scale(1.05);
+}
+
+.gallery-item p{
+padding:20px;
+line-height:1.8;
+color:#444;
+font-size:15px;
+text-align:left;
+}
+
+.caption{
+position:absolute;
+bottom:15px;
+left:15px;
+background:rgba(15,118,110,.9);
+color:white;
+padding:8px 12px;
+border-radius:8px;
+font-size:13px;
+font-weight:bold;
+}
+
+/* FORMS */
+form{
+max-width:700px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+input,
+textarea,
+select{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+textarea{
+min-height:180px;
+resize:vertical;
+}
+
+#reviewComment{
+min-height:160px;
+}
+
+.review-card{
+background:white;
+padding:25px;
+margin:20px auto;
+max-width:700px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:left;
+}
+
+/* WHATSAPP */
+.whatsapp{
+background:#25D366;
+margin:10px;
+}
+
+.whatsapp:hover{
+background:#1fa855;
+}
+
+/* SOCIAL MEDIA */
+.social-section{
+padding:40px 20px;
+text-align:center;
+}
+
+.social{
+display:inline-flex;
+justify-content:center;
+align-items:center;
+width:60px;
+height:60px;
+margin:10px;
+border-radius:50%;
+background:#0f766e;
+color:white;
+font-size:24px;
+text-decoration:none;
+transition:.3s;
+}
+
+.social:hover{
+transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+background:#111827;
+color:white;
+padding:30px;
+text-align:center;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:40px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.card{
+width:90%;
+}
+
+}
+  .menu{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(-10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.
+.dropdown-content h3{
+  margin:18px 0 10px;
+  color:#0f766e;
+  font-size:16px;
+  border-left:4px solid #0f766e;
+  padding-left:8px;
+}
+
+.park-card{
+  background:linear-gradient(145deg,#f8fafc,#ffffff);
+  border-radius:14px;
+  padding:10px;
+  margin-bottom:18px;
+  border:1px solid #e5e7eb;
+  transition:0.3s;
+}
+
+.park-card:hover{
+  transform:scale(1.01);
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.park-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:8px;
+}
+
+.park-card h4{
+  margin:6px 0;
+  font-size:15px;
+  color:#111827;
+}
+
+.lodge-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#f9fafb;
+  padding:8px;
+  margin:6px 0;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.lodge-card:hover{
+  background:#e6fffa;
+}
+
+.lodge-card img{
+  width:45px;
+  height:45px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.lodge-card a{
+  text-decoration:none;
+  color:#111827;
+  font-weight:600;
+  font-size:14px;
+}
+
+.dropdown{
+  position:relative;
+  display:inline-block;
+}
+
+.dropdown-content{
+  display:none;
+  position:absolute;
+  background:#fff;
+  width:420px;
+  max-height:80vh;
+  overflow-y:auto;
+  box-shadow:0 20px 50px rgba(0,0,0,0.25);
+  border-radius:16px;
+  padding:15px;
+  z-index:9999;
+}
+
+.dropdown:hover .dropdown-content{
+  display:block;
+}
+
+.sub{
+  background:#f8fafc;
+  margin:10px 0;
+  padding:10px;
+  border-radius:10px;
+}
+
+.sub strong{
+  display:block;
+  margin-bottom:6px;
+  color:#0f766e;
+}
+
+.sub a{
+  display:block;
+  text-decoration:none;
+  color:#111827;
+  padding:3px 0;
+}
+
+.sub a:hover{
+  color:##videos{
+  padding:60px 20px;
+  background:#f8fafc;
+}
+#videos{
+  padding:60px 20px;
+  background:#f8fafc;
+}
+
+#videos video{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:15px;
+}
+.navbar{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:8px 15px;
+    background:#ffffff;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.logo{
+    width:50px;
+    height:auto;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.navbar h1{
+    margin:0;
+    color:#0f766e;
+    font-size:20px;
+    font-weight:700;
+}
+    @media(max-width:768px){
+
+.navbar{
+    padding:8px 15px;
+}
+
+.logo{
+    width:50px;
+}
+
+.navbar h1{
+    font-size:20px;
+}
+}
+</style>
+</head>
+    
+
+<body>
+    <header class="navbar">
+    <img src="IMG_2743.jpeg"
+         alt="Pearl Dreams Safaris Logo"
+         class="logo">
+
+    <h1>PEARL DREAMS SAFARIS</h1>
+</header>
+
+<!-- NAV -->
+<nav>
+
+  <a href="gallery.html" class="btn">Gallery</a>
+
+  <div class="menu">
+      <a href="#booking" class="btn">Book Now</a>
+      <!-- Lodges & Parks dropdown here -->
+  </div>
+    <div class="dropdown">
+      <button class="btn">Lodges & Parks ▾</button>
+
+      <div class="dropdown-content">
+
+        <!-- 🇺🇬 UGANDA -->
+        <h3>Uganda</h3>
+
+        <div class="sub">
+          <strong>Bwindi Impenetrable NP</strong>
+          <a href="#">Buhoma Lodge </a>
+          <a href="#">Mahogany Springs Lodge </a>
+          <a href="#">Bweza Gorilla Lodge  </a>
+          <a href="#">Gorilla Forest Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Queen Elizabeth NP</strong>
+          <a href="#">Mweya Safari Lodge — </a>
+          <a href="#">Buffalo Safari Lodge </a>
+          <a href="#">Elephant Plains Lodge </a>
+          <a href="#">Enganzi Game Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Murchison Falls NP</strong>
+          <a href="#">Paraa Safari Lodge </a>
+          <a href="#">Pakuba Safari Lodge </a>
+          <a href="#">Chobe Safari Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Kidepo Valley NP</strong>
+          <a href="#">Apoka Safari Lodge </a>
+          <a href="#">Kidepo Savannah Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Lake Mburo NP</strong>
+          <a href="#">Mihingo Lodge </a>
+          <a href="#">Rwakobo Rock Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <!-- 🇰🇪 KENYA -->
+        <h3>Kenya</h3>
+
+        <div class="sub">
+          <strong>Maasai Mara</strong>
+          <a href="#">Mara Serena Lodge </a>
+          <a href="#">Keekorok Lodge </a>
+          <a href="#">Sarova Mara Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Amboseli NP</strong>
+          <a href="#">Ol Tukai Lodge </a>
+          <a href="#">Kibo Safari Camp </a>
+          <a href="#">Amboseli Serena Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Tsavo East NP</strong>
+          <a href="#">Voi Safari Lodge </a>
+          <a href="#">Satao Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Lake Nakuru NP</strong>
+          <a href="#">Sarova Lion Hill Lodge</a>
+          <a href="#">Lake Nakuru Lodge</a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <!-- 🇹🇿 TANZANIA -->
+        <h3>Tanzania</h3>
+
+        <div class="sub">
+          <strong>Serengeti NP</strong>
+          <a href="#">Four Seasons Safari Lodge </a>
+          <a href="#">Serengeti Serena Lodge </a>
+          <a href="#">Kubu Kubu Tented Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Ngorongoro Crater</strong>
+          <a href="#">Ngorongoro Serena Lodge</a>
+          <a href="#">Lemala Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Tarangire NP</strong>
+          <a href="#">Tarangire Safari Lodge </a>
+          <a href="#">Maramboi Tented Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <!-- 🇷🇼 RWANDA -->
+        <h3>Rwanda</h3>
+
+        <div class="sub">
+          <strong>Volcanoes NP</strong>
+          <a href="#">Bisate Lodge </a>
+          <a href="#">Sabyinyo Lodge </a>
+          <a href="#">Virunga Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Akagera NP</strong>
+          <a href="#">Ruzizi Tented Lodge </a>
+          <a href="#">Magashi Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <!-- 🇧🇮 BURUNDI -->
+        <h3>Burundi</h3>
+
+        <div class="sub">
+          <strong>Kibira NP</strong>
+          <a href="#">Kibira Eco Lodge </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Rusizi NP</strong>
+          <a href="#">Rusizi Safari Camp</a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <!-- 🇸🇸 SOUTH SUDAN -->
+        <h3>South Sudan</h3>
+
+        <div class="sub">
+          <strong>Boma NP</strong>
+          <a href="#">Boma Safari Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+        <div class="sub">
+          <strong>Bandingilo NP</strong>
+          <a href="#">Bandingilo Wildlife Camp </a>
+          <a href="#booking">Book Now</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</nav>
+  <script>
+function selectLodge(lodgeName){
+  document.getElementById("selectedLodge").value = lodgeName;
+  document.getElementById("booking").scrollIntoView({behavior:"smooth"});
+}
+</script>
+<!-- HERO -->
+<div class="hero">
+<div>
+<h1>Discover East Africa</h1>
+<p>Uganda • Kenya • Tanzania • Rwanda</p>
+<a href="#booking" class="btn">Plan Your Safari</a>
+</div>
+</div>
+
+<!-- DESTINATIONS -->
+<section>
+<h2>Top Destinations</h2>
+<div class="card">Uganda 🦍 Gorilla Trekking Paradise</div>
+<div class="card">Kenya 🦁 Big Five Safari Plains</div>
+<div class="card">Tanzania 🌋 Serengeti Migration</div>
+<div class="card">Rwanda 🌿 Misty Mountain Experience</div>
+</section>
+
+<!-- GALLERY WITH CAPTIONS -->
+<section>
+<h2>Safari Gallery</h2>
+
+<div class="gallery">
+
+<div class="gallery-item">
+<img src="3b9198fe-0483-40fa-8c7d-fb7706cdde46.jpeg">
+
+  <p>“Graceful and unforgettable, the giraffes of East Africa are a true symbol of the wild. Watching them move peacefully across the savannah during sunrise is one of the most magical safari experiences any traveler can witness.” 🌍</p>
+</div>
+
+<div class="gallery-item">
+<img src="36f95f26-015b-4c1b-8a22-cfe14fe0bd13.jpeg">
+
+  <p>“kasozi Andrew Our trusted tour guide delivers world-class safari experiences with excellent storytelling, patience, and attention to detail. Tourists consistently leave with amazing memories and stunning wildlife encounters.”</p>
+</div>
+  <div class="gallery-item">
+<img src="00ac0581-00f4-43d0-ab24-57ffb8f8b5ab.jpeg">
+
+  <p>“ kirunda AKA chichi blackman is our trusted tour guide delivers world-class safari experiences with excellent storytelling, patience, and attention to detail. Tourists consistently leave with amazing memories and stunning wildlife encounters.”</p>
+</div>
+    <div class="gallery-item">
+<img src="IMG_4316.jpeg">
+
+  <p>“this is shone Tamale both our tour guide and IT opperater all bookings and mails are worked upon by him.”</p>
+</div>
+
+<div class="gallery-item">
+<img src="7320a1c5-07e1-46a4-9658-1c8a209a1e8e.jpeg">
+
+  <p>Stealthy, powerful, and incredibly rare to spot, the leopard is one of Africa’s most fascinating predators. Seeing it resting high in the acacia trees or silently moving through the bush is a breathtaking safari moment that every traveler remembers forever.” 🐆🌿</p>
+</div>
+
+<div class="gallery-item">
+<img src="fbf12100-ebae-4f9d-b73c-0baef9944789.jpeg">
+
+  <p> To birding side we are the best The African ground hornbill is a striking and powerful bird of the savannah, known for its deep calls and dramatic presence as it walks across open grasslands in search of food. Spotting one during a safari is a rare and exciting moment that showcases the wild beauty of East Africa.” 🦅</p>
+</div>
+
+<div class="gallery-item">
+<img src="e8395a5f-fd72-4199-b374-4e2eeb7b5a2a.jpeg">
+<div class="caption"> gorilla tracking</div>
+  <p>Gorilla trekking is one of the most extraordinary wildlife experiences in Africa, offering a rare chance to meet mountain gorillas in their natural forest habitat. Guided by expert rangers, visitors hike through lush jungles until they quietly observe these gentle giants up close, a truly unforgettable moment in the wild.”
+
+“Gorilla permits are required for this experience and help protect the endangered mountain gorillas by limiting visitor numbers and funding conservation efforts. Each permit ensures safe, controlled, and responsible trekking while supporting local communities and preserving the future of these incredible animals.” 🦍🌿</p>
+</div>
+
+<div class="gallery-item">
+<img src="IMG-20250911-WA0014_Original.jpeg">
+<div class="caption"></div>
+  <p>Safari transport vehicles, especially the rugged Land Cruisers, are specially designed to take tourists deep into the heart of the wild. Built for rough terrain, they offer comfort, safety, and excellent visibility for game viewing across savannahs, forests, and national parks.”
+
+“These 4x4 Land Cruisers and 4*4 vans  are the backbone of safari adventures, allowing visitors to travel smoothly over dirt roads, river crossings, and remote tracks while enjoying uninterrupted views of wildlife. With open roofs (popups) and experienced drivers, every journey becomes part of the adventure.” 🚙🦁🌍</p>
+</div>
+<div class="gallery-item">
+<img src="07abd0b2-85af-4dbf-abe9-93353c71af38.jpeg">
+  <p> lets enjoy the tree climbing lions in queen elizabeth national park</p>
+<div class="caption"></div>
+</div>
+  <div class="gallery-item">
+<img src="1dbfbdc3-8a5b-43f5-96c2-92e99c598d49.jpeg">
+    
+<div class="caption"></div>
+    <p> we focus on providing you the dream of your choice,the dream of our company is to meet the client desires</p>
+</div>
+  <div class="gallery-item">
+<img src="1fb7f4b8-dcc1-4a7d-b8b1-b6ef2b486267.jpeg">
+<div class="caption"></div>
+      <p>## Hyenas
+
+Hyenas are carnivorous mammals belonging to the family Hyaenidae. Although they resemble dogs in appearance, they are more closely related to cats. Hyenas are among Africa's most adaptable predators and scavengers, playing a vital role in maintaining healthy ecosystems by removing carcasses and controlling prey populations.
+
+There are four living species of hyenas: the spotted hyena (Crocuta crocuta), striped hyena (Hyaena hyaena), brown hyena (Parahyaena brunnea), and aardwolf (Proteles cristata). Of these, the spotted hyena, brown hyena, and aardwolf are found only in Africa, while the striped hyena also occurs in parts of the Middle East and Asia.
+
+Hyenas are known for their powerful jaws, exceptional intelligence, keen senses, and complex social behavior. The spotted hyena is the largest species and lives in large, female-led clans, while the aardwolf is unique for feeding almost exclusively on termites.
+
+As both hunters and scavengers, hyenas are essential to the balance of African wildlife, helping keep ecosystems clean and healthy.</p>
+</div>
+  <div class="gallery-item">
+<img src="45d25297-c321-49a1-bbdd-e7bf39d5b333.jpeg">
+<div class="caption"></div>
+    <p>## Lion Family
+
+A lion family, known as a pride, is the only true social group among wild cats. A pride typically consists of related lionesses, their cubs, and one to several adult male lions that work together to protect the group and its territory.
+
+Lionesses are the primary hunters and care for the cubs cooperatively, often nursing and raising each other's young. Their teamwork increases the survival of the pride and allows them to hunt large prey efficiently. Male lions defend the pride from rival males and other threats, helping to ensure the safety of the cubs and the group's territory.
+
+Lion cubs are playful and curious, learning essential hunting and survival skills through play and by observing the adults. Living together as a pride gives lions a unique advantage, enabling them to protect one another, raise their young successfully, and thrive in the African savanna.</p>
+</div>
+  <div class="gallery-item">
+<img src="5457fa89-b554-496e-8167-0132764e46ba.jpeg">
+<div class="caption"></div>
+</div>
+  <div class="gallery-item">
+<img src="IMG_2520.jpeg">
+<div class="caption"></div>
+    <p> ## Topi
+
+The topi (Damaliscus lunatus) is a graceful antelope found in the grasslands and floodplains of eastern, central, and southern Africa. It is easily recognized by its reddish-brown coat, distinctive dark patches on the upper legs and face, and its lyre-shaped, ringed horns, which are present in both males and females.
+
+Topis are fast runners, capable of reaching speeds of up to 70 km/h (43 mph), helping them escape predators such as lions, leopards, cheetahs, and hyenas. They are social animals that live in herds, feeding mainly on grasses. During the breeding season, males establish and defend territories to attract females.
+
+As important grazers, topis help maintain healthy grassland ecosystems and are a key prey species for many of Africa's large carnivores, making them an essential part of the savanna food web.</p>
+</div>
+  <div class="gallery-item">
+<img src="b52c33b2-2c66-461b-8c5f-06212a1d2341.jpeg">
+<div class="caption"></div>
+    <p>## Our Safari Vehicles
+
+Our tours are conducted using well-maintained 4x4 Toyota Land Cruisers and comfortable safari vans, specially designed to provide a safe, reliable, and enjoyable travel experience. These vehicles are ideal for navigating national parks, rugged terrain, and rural roads while ensuring maximum comfort throughout your journey.
+
+Each vehicle offers comfortable seating, ample luggage space, and large windows for excellent wildlife viewing and photography. Many are equipped with pop-up roofs, allowing guests to enjoy unobstructed views of animals and landscapes during game drives.
+
+Whether you choose a Land Cruiser for its superior off-road performance or a safari van for its comfort and value, our vehicles are driven by experienced professional guides who are committed to making every safari safe, memorable, and enjoyable.</p>
+</div>
+</div>
+  <div class="gallery-item">
+<img src="6e35e3f3-a5ce-486c-a499-331cbdd00a0a.jpeg">
+<div class="caption"></div>
+    <p> the loxondota africanas the species of africa  meet the largest mammal on earth## Elephant Herd
+
+Elephants are highly social animals that live in close-knit family groups known as herds. A typical herd consists of related adult females, their calves, and young elephants, and is led by the oldest and most experienced female, called the matriarch. She guides the herd to food and water, makes important decisions, and helps protect the group from danger.
+
+Male elephants usually leave their natal herd between the ages of 10 and 15 years. They may live alone or form small bachelor groups, joining female herds only during the breeding season.
+
+Elephants communicate using a variety of sounds, including trumpets, rumbles, and low-frequency calls that can travel over long distances. They also use touch and body language to strengthen social bonds. Herd members work together to care for calves, defend one another, and navigate their environment, making elephants one of the most intelligent and socially complex animals in the wild.</p>
+</div>
+  <div class="gallery-item">
+<img src="f6e91d2e-6796-4c1e-bec6-94637ee16f97.jpeg">
+    <p>## Leopard
+
+The leopard (Panthera pardus) is one of Africa's most adaptable and elusive big cats. Recognized by its golden coat covered with distinctive black rosette-shaped spots, the leopard inhabits a wide range of environments, including savannas, forests, mountains, and wetlands.
+
+Leopards are solitary and primarily nocturnal, spending much of the day resting in trees or dense vegetation. They are powerful and agile hunters, feeding on a variety of prey such as antelopes, monkeys, warthogs, birds, and small mammals. Their exceptional strength allows them to carry prey into trees, protecting it from scavengers like hyenas and lions.
+
+Excellent climbers, swimmers, and stealthy stalkers, leopards rely on camouflage, patience, and surprise to capture their prey. As apex predators, they play an important role in maintaining healthy ecosystems by helping regulate prey populations across Africa.</p>
+<div class="caption"></div>
+</div>
+  
+</div>
+</section>
+  
+<!-- REVIEWS (FIREBASE - UNCHANGED) -->
+<section id="reviews-section">
+<h2>Customer Reviews</h2>
+
+<input type="text" id="reviewName" placeholder="Your Name">
+<select id="reviewRating">
+<option value="5">⭐⭐⭐⭐⭐</option>
+<option value="4">⭐⭐⭐⭐</option>
+<option value="3">⭐⭐⭐</option>
+<option value="2">⭐⭐</option>
+<option value="1">⭐</option>
+</select>
+
+<textarea id="reviewComment" placeholder="Write your review"></textarea>
+<button onclick="submitReview()">Submit Review</button>
+
+<div id="reviewsContainer"></div>
+</section>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+query,
+orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "",
+authDomain: "pearl-dreams-safaris.firebaseapp.com",
+projectId: "pearl-dreams-safaris",
+storageBucket: "pearl-dreams-safaris.firebasestorage.app",
+messagingSenderId: "856441091870",
+appId: "1:856441091870:web:100e4a11e6abb36e88fb0f",
+measurementId: "G-NHC5NRZX90"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.submitReview = async function () {
+
+const name = document.getElementById("reviewName").value;
+const rating = document.getElementById("reviewRating").value;
+const comment = document.getElementById("reviewComment").value;
+
+if (!name || !comment) {
+alert("Please fill all fields");
+return;
+}
+
+await addDoc(collection(db, "reviews"), {
+name,
+rating,
+comment,
+createdAt: Date.now()
+});
+
+document.getElementById("reviewName").value = "";
+document.getElementById("reviewComment").value = "";
+
+loadReviews();
+};
+
+async function loadReviews() {
+
+const reviewsContainer = document.getElementById("reviewsContainer");
+reviewsContainer.innerHTML = "";
+
+const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
+const snapshot = await getDocs(q);
+
+snapshot.forEach((doc) => {
+const review = doc.data();
+
+reviewsContainer.innerHTML += `
+<div class="review-card">
+<h4>${review.name}</h4>
+<p>${"⭐".repeat(review.rating)}</p>
+<p>${review.comment}</p>
+</div>
+`;
+});
+}
+
+loadReviews();
+</script>
+
+<!-- EMAILJS (UNCHANGED LOGIC) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+emailjs.init("sfXnGzmLhepzCRFWS");
+
+document.addEventListener("DOMContentLoaded", function () {
+
+const form = document.getElementById("bookingForm");
+
+if (form) {
+form.addEventListener("submit", function(e){
+e.preventDefault();
+
+emailjs.sendForm(
+"service_7zd9d3k",
+"template_ujlcl24",
+this
+).then(function(){
+
+alert("Booking sent successfully!");
+
+window.open(
+"https://wa.me/256770462422?text=New%20Safari%20Booking%20from%20website",
+"_blank"
+);
+
+});
+});
+}
+
+});
+</script>
+
+<!-- BOOKING FORM -->
+<section id="booking">
+<h2>Safari Booking</h2>
+
+<form id="bookingForm">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="phone" placeholder="Phone Number" required>
+<textarea name="message" placeholder="Travel details (dates, destination)" required></textarea>
+<button type="submit" class="btn">Send Booking</button>
+</form>
+</section>
+  <section>
+  <a class="btn whatsapp"
+href="https://wa.me/256770462422?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20want%20to%20book%20a%20safari"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+<script>
+  </emailjs.sendForm(
+    "service_7zd9d3k",
+    "template_ujlcl24",
+    this
+).then(function(){
+
+    alert("Booking sent successfully!");
+
+    window.open(
+        "https://wa.me/256770462422?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20have%20just%20submitted%20a%20booking%20from%20the%20website.",
+        "_blank"
+    );
+
+});
+</script>
+  <a class="btn whatsapp"
+href="https://wa.me/256762584996?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20want%20to%20book%20a%20safari"
+target="_blank">
+<i class="fab fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+<script>
+  </emailjs.sendForm(
+    "service_7zd9d3k",
+    "template_ujlcl24",
+    this
+).then(function(){
+
+    alert("Booking sent successfully!");
+
+    window.open(
+        "https://wa.me/256762584996?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20have%20just%20submitted%20a%20booking%20from%20the%20website.",
+        "_blank"
+    );
+
+});
+</script>
+</section>
+<!-- FOOTER -->
+<footer>
+  <section class="social-section">
+<h2>Follow Pearl Dreams Safaris</h2>
+
+<a href="#" class="social">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="#" class="social">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="#" class="social">
+<i class="fab fa-x-twitter"></i>
+</a>
+
+<a href="#" class="social">
+<i class="fab fa-tiktok"></i>
+</a>
+
+</section>
+<h2>Contact</h2>
+<p>📞 +256 759 413 273</p>
+<p>📞 +256 770 462 422</p>
+<p>📧 Pearldreamssafaris@gmail.com</p>
+<p>📍 Kampala, Uganda</p>
+<p>© 2026 Pearl Dreams Safaris</p>
+</footer>
+
+</body>
+</html>
