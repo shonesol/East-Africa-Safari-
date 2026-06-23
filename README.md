@@ -1,2 +1,0 @@
-# pearl-dream-safaris
-Tourists
