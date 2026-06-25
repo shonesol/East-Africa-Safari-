@@ -492,6 +492,49 @@ header p{
     margin-top:5px;
     color:#0f766e;
 }
+        .menu-toggle{
+    background:#0f766e;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.menu-toggle:hover{
+    background:#115e59;
+}
+
+.header-menu{
+    display:none;
+    max-width:300px;
+    margin:15px auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    overflow:hidden;
+}
+
+.header-menu a{
+    display:block;
+    padding:14px 20px;
+    text-decoration:none;
+    color:#111827;
+    border-bottom:1px solid #eee;
+    transition:.3s;
+}
+
+.header-menu a:hover{
+    background:#0f766e;
+    color:white;
+}
+
+.header-menu.show{
+    display:block;
+}
 </style>
 </head>
     <header>
@@ -500,6 +543,24 @@ header p{
     <h1>BRENDAVA TOURS & TRAVEL</h1>
 
     <p>Explore East Africa's Finest Adventures</p>
+        <button class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i> Menu
+</button>
+
+<div id="headerMenu" class="header-menu">
+    <a href="#about">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="destination.html">Destinations</a>
+    <a href="#videos">Videos</a>
+    <a href="#featured-trips">Featured Trips</a>
+    <a href="#booking">Bookings</a>
+    <a href="#contact">Contact Us</a>
+    <a href="#location">Location</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="tel:+256789336441">Call Us</a>
+    <a href="mailto:brendavatoursandtravel@gmail.com">Email Us</a>
+</div>
 </header>
 <!-- NAVIGATION -->
 <nav>
