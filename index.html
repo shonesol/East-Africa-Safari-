@@ -534,6 +534,19 @@ header p{
 .header-menu.show{
     display:block;
 }
+    
+.language-switcher {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.language-switcher select {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: white;
+}
 </style>
 </head>
     <header>
@@ -545,7 +558,15 @@ header p{
         <button class="menu-toggle" onclick="toggleMenu()">
     <i class="fas fa-bars"></i> Menu
 </button>
-
+<div class="language-switcher">
+  <select id="languageSelect" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="fr">French</option>
+    <option value="es">Spanish</option>
+    <option value="de">German</option>
+    <option value="it">Italian</option>
+  </select>
+</div>
     
 <!-- menu -->
 <div id="headerMenu" class="header-menu">
@@ -997,6 +1018,62 @@ if ('scrollRestoration' in history) {
 window.addEventListener("load", function () {
     window.scrollTo(0, 0);
 });
+</script>
+      <script>
+const translations = {
+  en: {
+    title: "Brendava Tours & Travel",
+    welcome: "Welcome to Brendava Tours & Travel",
+    about: "We offer unforgettable safari and travel experiences across East Africa.",
+    contact: "Contact Us"
+  },
+
+  fr: {
+    title: "Brendava Tours & Voyage",
+    welcome: "Bienvenue chez Brendava Tours & Voyage",
+    about: "Nous offrons des expériences de safari inoubliables en Afrique de l'Est.",
+    contact: "Contactez-nous"
+  },
+
+  es: {
+    title: "Brendava Tours y Viajes",
+    welcome: "Bienvenido a Brendava Tours y Viajes",
+    about: "Ofrecemos experiencias de safari inolvidables en África Oriental.",
+    contact: "Contáctanos"
+  },
+
+  de: {
+    title: "Brendava Touren & Reisen",
+    welcome: "Willkommen bei Brendava Touren & Reisen",
+    about: "Wir bieten unvergessliche Safari-Erlebnisse in Ostafrika.",
+    contact: "Kontaktieren Sie uns"
+  },
+
+  it: {
+    title: "Brendava Tour e Viaggi",
+    welcome: "Benvenuto in Brendava Tour e Viaggi",
+    about: "Offriamo esperienze safari indimenticabili in Africa orientale.",
+    contact: "Contattaci"
+  }
+};
+
+function changeLanguage() {
+  const lang = document.getElementById("languageSelect").value;
+
+  document.getElementById("titleText").innerText = translations[lang].title;
+  document.getElementById("welcomeText").innerText = translations[lang].welcome;
+  document.getElementById("aboutText").innerText = translations[lang].about;
+  document.getElementById("contactText").innerText = translations[lang].contact;
+
+  localStorage.setItem("brendava_lang", lang);
+}
+
+// Load saved language on page load
+window.onload = function () {
+  const savedLang = localStorage.getItem("brendava_lang") || "en";
+  document.getElementById("languageSelect").value = savedLang;
+  changeLanguage();
+};
 </script>
 </body>
 </html>
