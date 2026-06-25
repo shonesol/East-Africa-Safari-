@@ -1020,60 +1020,63 @@ window.addEventListener("load", function () {
 });
 </script>
       <script>
-const translations = {
+      const translations = {
   en: {
-    title: "Brendava Tours & Travel",
+    site_name: "Brendava Tours & Travel",
     welcome: "Welcome to Brendava Tours & Travel",
-    about: "We offer unforgettable safari and travel experiences across East Africa.",
+    about: "We offer unforgettable safari experiences across East Africa.",
+    safaris: "Our Safaris",
+    gallery: "Photo Gallery",
     contact: "Contact Us"
   },
 
   fr: {
-    title: "Brendava Tours & Voyage",
+    site_name: "Brendava Tours & Voyage",
     welcome: "Bienvenue chez Brendava Tours & Voyage",
-    about: "Nous offrons des expériences de safari inoubliables en Afrique de l'Est.",
+    about: "Nous offrons des safaris inoubliables en Afrique de l'Est.",
+    safaris: "Nos Safaris",
+    gallery: "Galerie Photos",
     contact: "Contactez-nous"
   },
 
   es: {
-    title: "Brendava Tours y Viajes",
+    site_name: "Brendava Tours y Viajes",
     welcome: "Bienvenido a Brendava Tours y Viajes",
-    about: "Ofrecemos experiencias de safari inolvidables en África Oriental.",
+    about: "Ofrecemos safaris inolvidables en África Oriental.",
+    safaris: "Nuestros Safaris",
+    gallery: "Galería de Fotos",
     contact: "Contáctanos"
-  },
-
-  de: {
-    title: "Brendava Touren & Reisen",
-    welcome: "Willkommen bei Brendava Touren & Reisen",
-    about: "Wir bieten unvergessliche Safari-Erlebnisse in Ostafrika.",
-    contact: "Kontaktieren Sie uns"
-  },
-
-  it: {
-    title: "Brendava Tour e Viaggi",
-    welcome: "Benvenuto in Brendava Tour e Viaggi",
-    about: "Offriamo esperienze safari indimenticabili in Africa orientale.",
-    contact: "Contattaci"
   }
 };
 
-function changeLanguage() {
-  const lang = document.getElementById("languageSelect").value;
-
-  document.getElementById("titleText").innerText = translations[lang].title;
-  document.getElementById("welcomeText").innerText = translations[lang].welcome;
-  document.getElementById("aboutText").innerText = translations[lang].about;
-  document.getElementById("contactText").innerText = translations[lang].contact;
+// 🔥 Apply language
+function applyLanguage(lang) {
+  document.querySelectorAll("[data-lang]").forEach(el => {
+    const key = el.getAttribute("data-lang");
+    if (translations[lang] && translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
+  });
 
   localStorage.setItem("brendava_lang", lang);
 }
 
-// Load saved language on page load
-window.onload = function () {
+// 🔥 Change language
+function changeLanguage() {
+  const select = document.getElementById("languageSelect");
+  const lang = select.value;
+  applyLanguage(lang);
+}
+
+// 🔥 Auto load saved language
+window.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("brendava_lang") || "en";
-  document.getElementById("languageSelect").value = savedLang;
-  changeLanguage();
-};
-</script>
+
+  const select = document.getElementById("languageSelect");
+  if (select) select.value = savedLang;
+
+  applyLanguage(savedLang);
+});
+          </script>
 </body>
 </html>
