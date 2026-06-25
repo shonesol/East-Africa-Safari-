@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PEARL DREAMS SAFARIS</title>
+<title>BRENDAVA TOURS & TRAVEL</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -15,17 +15,43 @@ font-family:'Inter',sans-serif;
 background:#f5f7fa;
 }
 /* NAVIGATION */
+.menu{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
 nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:10px 20px;
+    padding:12px 20px;
     background:#fff;
     position:sticky;
     top:0;
     z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-    flex-wrap:wrap;
+}
+
+@media(max-width:768px){
+    nav{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .menu{
+        justify-content:center;
+    }
+
+    .btn{
+        font-size:14px;
+        padding:10px 15px;
+    }
+
+    .dropdown-content{
+        width:95vw;
+        left:-150px;
+    }
 }
 nav h1{
 color:#0f766e;
@@ -424,180 +450,97 @@ align-items:center;
 <body>
     <header class="navbar">
     <img src="IMG_2743.jpeg"
-         alt="Pearl Dreams Safaris Logo"
+         alt="Brendava tours & travel Logo"
          class="logo">
 
-    <h1>PEARL DREAMS SAFARIS</h1>
+    <h1>BRENDAVA TOURS & TRAVEL</h1>
 </header>
-
-<!-- NAV -->
+<!-- NAVIGATION -->
 <nav>
-<a href="destination.html" class="btn">Destinations</a>
-  <a href="gallery.html" class="btn">Gallery</a>
+    <h1>BRENDAVA TOURS & TRAVEL</h1>
 
-  <div class="menu">
-      <a href="#booking" class="btn">Book Now</a>
-      <!-- Lodges & Parks dropdown here -->
-  </div>
-    <div class="dropdown">
-      <button class="btn">Lodges & Parks ▾</button>
+    <div class="menu">
 
-      <div class="dropdown-content">
+        <a href="destination.html" class="btn">
+            <i class="fas fa-map-marked-alt"></i> Destinations
+        </a>
 
-        <!-- 🇺🇬 UGANDA -->
-        <h3>Uganda</h3>
+        <a href="gallery.html" class="btn">
+            <i class="fas fa-images"></i> Gallery
+        </a>
 
-        <div class="sub">
-          <strong>Bwindi Impenetrable NP</strong>
-          <a href="#">Buhoma Lodge </a>
-          <a href="#">Mahogany Springs Lodge </a>
-          <a href="#">Bweza Gorilla Lodge  </a>
-          <a href="#">Gorilla Forest Camp </a>
-          <a href="#booking">Book Now</a>
+        <a href="#booking" class="btn">
+            <i class="fas fa-calendar-check"></i> Book Now
+        </a>
+
+        <div class="dropdown">
+            <button class="btn">
+                <i class="fas fa-hotel"></i> Lodges & Parks ▾
+            </button>
+
+            <div class="dropdown-content">
+
+                <!-- Uganda -->
+                <h3>Uganda</h3>
+
+                <div class="sub">
+                    <strong>Bwindi Impenetrable National Park</strong>
+                    <a href="#">Buhoma Lodge</a>
+                    <a href="#">Mahogany Springs Lodge</a>
+                    <a href="#">Bweza Gorilla Lodge</a>
+                    <a href="#">Gorilla Forest Camp</a>
+                </div>
+
+                <div class="sub">
+                    <strong>Queen Elizabeth National Park</strong>
+                    <a href="#">Mweya Safari Lodge</a>
+                    <a href="#">Buffalo Safari Lodge</a>
+                    <a href="#">Elephant Plains Lodge</a>
+                </div>
+
+                <div class="sub">
+                    <strong>Murchison Falls National Park</strong>
+                    <a href="#">Paraa Safari Lodge</a>
+                    <a href="#">Pakuba Safari Lodge</a>
+                    <a href="#">Chobe Safari Lodge</a>
+                </div>
+
+                <!-- Kenya -->
+                <h3>Kenya</h3>
+
+                <div class="sub">
+                    <strong>Maasai Mara National Reserve</strong>
+                    <a href="#">Mara Serena Lodge</a>
+                    <a href="#">Keekorok Lodge</a>
+                    <a href="#">Sarova Mara Camp</a>
+                </div>
+
+                <!-- Tanzania -->
+                <h3>Tanzania</h3>
+
+                <div class="sub">
+                    <strong>Serengeti National Park</strong>
+                    <a href="#">Four Seasons Safari Lodge</a>
+                    <a href="#">Serengeti Serena Lodge</a>
+                    <a href="#">Kubu Kubu Tented Lodge</a>
+                </div>
+
+                <!-- Rwanda -->
+                <h3>Rwanda</h3>
+
+                <div class="sub">
+                    <strong>Volcanoes National Park</strong>
+                    <a href="#">Bisate Lodge</a>
+                    <a href="#">Sabyinyo Lodge</a>
+                    <a href="#">Virunga Lodge</a>
+                </div>
+
+            </div>
         </div>
 
-        <div class="sub">
-          <strong>Queen Elizabeth NP</strong>
-          <a href="#">Mweya Safari Lodge — </a>
-          <a href="#">Buffalo Safari Lodge </a>
-          <a href="#">Elephant Plains Lodge </a>
-          <a href="#">Enganzi Game Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Murchison Falls NP</strong>
-          <a href="#">Paraa Safari Lodge </a>
-          <a href="#">Pakuba Safari Lodge </a>
-          <a href="#">Chobe Safari Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Kidepo Valley NP</strong>
-          <a href="#">Apoka Safari Lodge </a>
-          <a href="#">Kidepo Savannah Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Lake Mburo NP</strong>
-          <a href="#">Mihingo Lodge </a>
-          <a href="#">Rwakobo Rock Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <!-- 🇰🇪 KENYA -->
-        <h3>Kenya</h3>
-
-        <div class="sub">
-          <strong>Maasai Mara</strong>
-          <a href="#">Mara Serena Lodge </a>
-          <a href="#">Keekorok Lodge </a>
-          <a href="#">Sarova Mara Camp </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Amboseli NP</strong>
-          <a href="#">Ol Tukai Lodge </a>
-          <a href="#">Kibo Safari Camp </a>
-          <a href="#">Amboseli Serena Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Tsavo East NP</strong>
-          <a href="#">Voi Safari Lodge </a>
-          <a href="#">Satao Camp </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Lake Nakuru NP</strong>
-          <a href="#">Sarova Lion Hill Lodge</a>
-          <a href="#">Lake Nakuru Lodge</a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <!-- 🇹🇿 TANZANIA -->
-        <h3>Tanzania</h3>
-
-        <div class="sub">
-          <strong>Serengeti NP</strong>
-          <a href="#">Four Seasons Safari Lodge </a>
-          <a href="#">Serengeti Serena Lodge </a>
-          <a href="#">Kubu Kubu Tented Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Ngorongoro Crater</strong>
-          <a href="#">Ngorongoro Serena Lodge</a>
-          <a href="#">Lemala Camp </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Tarangire NP</strong>
-          <a href="#">Tarangire Safari Lodge </a>
-          <a href="#">Maramboi Tented Camp </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <!-- 🇷🇼 RWANDA -->
-        <h3>Rwanda</h3>
-
-        <div class="sub">
-          <strong>Volcanoes NP</strong>
-          <a href="#">Bisate Lodge </a>
-          <a href="#">Sabyinyo Lodge </a>
-          <a href="#">Virunga Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Akagera NP</strong>
-          <a href="#">Ruzizi Tented Lodge </a>
-          <a href="#">Magashi Camp </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <!-- 🇧🇮 BURUNDI -->
-        <h3>Burundi</h3>
-
-        <div class="sub">
-          <strong>Kibira NP</strong>
-          <a href="#">Kibira Eco Lodge </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Rusizi NP</strong>
-          <a href="#">Rusizi Safari Camp</a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <!-- 🇸🇸 SOUTH SUDAN -->
-        <h3>South Sudan</h3>
-
-        <div class="sub">
-          <strong>Boma NP</strong>
-          <a href="#">Boma Safari Camp </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-        <div class="sub">
-          <strong>Bandingilo NP</strong>
-          <a href="#">Bandingilo Wildlife Camp </a>
-          <a href="#booking">Book Now</a>
-        </div>
-
-      </div>
     </div>
-
-  </div>
 </nav>
+
   <script>
 function selectLodge(lodgeName){
   document.getElementById("selectedLodge").value = lodgeName;
@@ -628,16 +571,6 @@ function selectLodge(lodgeName){
 <img src="36f95f26-015b-4c1b-8a22-cfe14fe0bd13.jpeg">
 
   <p>“kasozi Andrew Our trusted tour guide delivers world-class safari experiences with excellent storytelling, patience, and attention to detail. Tourists consistently leave with amazing memories and stunning wildlife encounters.”</p>
-</div>
-  <div class="gallery-item">
-<img src="00ac0581-00f4-43d0-ab24-57ffb8f8b5ab.jpeg">
-
-  <p>“ kirunda AKA chichi blackman is our trusted tour guide delivers world-class safari experiences with excellent storytelling, patience, and attention to detail. Tourists consistently leave with amazing memories and stunning wildlife encounters.”</p>
-</div>
-    <div class="gallery-item">
-<img src="IMG_4316.jpeg">
-
-  <p>“this is shone Tamale both our tour guide and IT opperater all bookings and mails are worked upon by him.”</p>
 </div>
 
 <div class="gallery-item">
@@ -869,7 +802,7 @@ this
 alert("Booking sent successfully!");
 
 window.open(
-"https://wa.me/256770462422?text=New%20Safari%20Booking%20from%20website",
+"https://wa.me/+256742254321?text=New%20Safari%20Booking%20from%20website",
 "_blank"
 );
 
@@ -894,7 +827,7 @@ window.open(
 </section>
   <section>
   <a class="btn whatsapp"
-href="https://wa.me/256770462422?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20want%20to%20book%20a%20safari"
+href="https://wa.me/+256742254321?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20want%20to%20book%20a%20safari"
 target="_blank">
 <i class="fab fa-whatsapp"></i> Chat on WhatsApp
   </a>
@@ -908,34 +841,11 @@ target="_blank">
     alert("Booking sent successfully!");
 
     window.open(
-        "https://wa.me/256770462422?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20have%20just%20submitted%20a%20booking%20from%20the%20website.",
+        "https://wa.me/+256742254321?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20have%20just%20submitted%20a%20booking%20from%20the%20website.",
         "_blank"
     );
 
 });
-</script>
-  <a class="btn whatsapp"
-href="https://wa.me/256762584996?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20want%20to%20book%20a%20safari"
-target="_blank">
-<i class="fab fa-whatsapp"></i> Chat on WhatsApp
-  </a>
-<script>
-  </emailjs.sendForm(
-    "service_7zd9d3k",
-    "template_ujlcl24",
-    this
-).then(function(){
-
-    alert("Booking sent successfully!");
-
-    window.open(
-        "https://wa.me/256762584996?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20have%20just%20submitted%20a%20booking%20from%20the%20website.",
-        "_blank"
-    );
-
-});
-</script>
-</section>
 <!-- FOOTER -->
 <footer>
   <section class="social-section">
@@ -945,25 +855,24 @@ target="_blank">
 <i class="fab fa-facebook-f"></i>
 </a>
 
-<a href="#" class="social">
+<a href="https://www.instagram.com/brendavatoursandtravel?igsh=MWZkajRqN21zY2Fodw%3D%3D&utm_source=qr" class="social">
 <i class="fab fa-instagram"></i>
 </a>
 
-<a href="#" class="social">
-<i class="fab fa-x-twitter"></i>
+<a href="https://www.youtube.com/@BRENDAVATOURSTRAVELCOMPANY" class="social">
+<i class="fab fa-youtube"></i>
 </a>
 
-<a href="#" class="social">
+<a href="www.tiktok.com/@brendava.tours.andtravel" class="social">
 <i class="fab fa-tiktok"></i>
 </a>
 
 </section>
 <h2>Contact</h2>
-<p>📞 +256 759 413 273</p>
-<p>📞 +256 770 462 422</p>
-<p>📧 Pearldreamssafaris@gmail.com</p>
+<p>📞 +256789336441</p>
+<p>📧 brendavatoursandtravel@gmail.com</p>
 <p>📍 Kampala, Uganda</p>
-<p>© 2026 Pearl Dreams Safaris</p>
+<p>© 2026 brendavatoursandtravel</p>
 </footer>
 
 </body>
