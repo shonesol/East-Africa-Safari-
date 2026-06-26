@@ -1673,7 +1673,7 @@ Explore More
 <textarea id="reviewComment" placeholder="Write your review"></textarea>
 <button onclick="submitReview()">Submit Review</button>
 
-<div id="reviewsContainer"></div>
+<div id="reviewsContainer" class="review-slider"></div>
 </section>
 
 <script type="module">
@@ -1727,25 +1727,55 @@ loadReviews();
 async function loadReviews() {
 
 const reviewsContainer = document.getElementById("reviewsContainer");
-reviewsContainer.innerHTML = "";
 
 const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
 const snapshot = await getDocs(q);
 
-snapshot.forEach((doc) => {
-const review = doc.data();
+const reviews = [];
 
-reviewsContainer.innerHTML += `
-<div class="review-card">
-<h4>${review.name}</h4>
-<p>${"⭐".repeat(review.rating)}</p>
-<p>${review.comment}</p>
-</div>
-`;
+snapshot.forEach((doc) => {
+    reviews.push(doc.data());
 });
+
+if(reviews.length === 0){
+    reviewsContainer.innerHTML = "<p>No reviews yet.</p>";
+    return;
 }
 
-loadReviews();
+let current = 0;
+
+function showReview(){
+
+    const review = reviews[current];
+
+    reviewsContainer.style.opacity = "0";
+
+    setTimeout(()=>{
+
+        reviewsContainer.innerHTML = `
+        <div class="review-card">
+            <h4>${review.name}</h4>
+            <p>${"⭐".repeat(review.rating)}</p>
+            <p>${review.comment}</p>
+        </div>
+        `;
+
+        reviewsContainer.style.opacity = "1";
+
+        current++;
+
+        if(current >= reviews.length){
+            current = 0;
+        }
+
+    },500);
+}
+
+showReview();
+
+setInterval(showReview,5000);
+
+}
 </script>
 
 <!-- EMAILJS (UNCHANGED LOGIC) -->
