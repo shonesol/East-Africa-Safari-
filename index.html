@@ -754,6 +754,7 @@ function selectLodge(lodgeName){
 <div class="gallery-item">
 <img src="3b9198fe-0483-40fa-8c7d-fb7706cdde46.jpeg">
     <p>Murchison falls National park
+        <div class="more-content" id="murchison">
 <p>Murchison Falls National Park is Uganda’s largest and oldest national park. It covers approximately 3,893 km² and lies in northwestern Uganda across the districts of Nwoya, Masindi, Kiryandongo, Buliisa, and Pakwach. The park was established in 1952 and is managed by the Uganda Wildlife Authority.
 
 Location
@@ -813,10 +814,15 @@ Popular Activities
 
 Murchison Falls National Park is one of East Africa’s premier safari destinations, combining spectacular scenery, abundant wildlife, and the dramatic power of the Nile River in a single park.</p>
 </div>
+<button class="explore-btn" onclick="toggleContent('murchison',this)">
 
+Explore More
+
+</button>
 <div class="gallery-item">
 <img src="IMG_3141.jpeg">
 <p>kidepo valley national park</p>
+    <div class="more-content" id="kidepo">
 <p>Kidepo Valley National Park is one of Africa’s most spectacular wilderness parks. Located in the remote northeastern corner of Uganda, it borders South Sudan and Kenya. The park covers approximately 1,442 km² and was established in 1962.
 
 Location
@@ -872,10 +878,14 @@ Popular Activities
 
 Kidepo Valley National Park is renowned for its untouched landscapes, rich biodiversity, and low visitor numbers, making it one of Uganda’s most rewarding destinations for travelers seeking an authentic safari experience.</p>
 </div>
+<button class="explore-btn" onclick="toggleContent('kidepo',this)">
 
+Explore More
+
+</button>
 <div class="gallery-item">
 <img src="6e35e3f3-a5ce-486c-a499-331cbdd00a0a.jpeg">
-
+<div class="more-content" id="queen">
 <p>Queen Elizabeth National Park is Uganda’s most popular savannah national park. It was established in 1952 and covers approximately 1,978 km². The park is renowned for its incredible biodiversity, scenic landscapes, and abundant wildlife.
 
 Location
@@ -932,10 +942,15 @@ Popular Activities
 
 Queen Elizabeth National Park is one of Uganda’s finest safari destinations, offering an excellent combination of wildlife, birdlife, scenic crater lakes, and the famous tree-climbing lions of the Ishasha sector</p>
 </div>
+<button class="explore-btn" onclick="toggleContent('queen',this)">
 
+Explore More
+
+</button>
 <div class="gallery-item">
 <img src="IMG_3108.jpeg">
-
+<div class="more-content" id="bwindi">
+    <div class="more-content" id="bwindi">
 <p>Bwindi Impenetrable National Park is one of Uganda’s most famous national parks and a UNESCO World Heritage Site. Established in 1991, it covers approximately 331 km² of ancient tropical rainforest in southwestern Uganda. The park is renowned for protecting nearly half of the world’s remaining mountain gorillas.
 
 Location
@@ -993,11 +1008,16 @@ Popular Activities
 * Photography
 
 Bwindi Impenetrable National Park is one of the world’s premier wildlife destinations, offering unforgettable encounters with mountain gorillas, rich biodiversity, and the unique beauty of Uganda’s ancient rainforest.</p>
-</div>
+</div><button class="explore-btn" onclick="toggleContent('bwindi',this)">
+
+Explore More
+
+</button>
 
 <div class="gallery-item">
 <img src="9f12e693-de39-4399-bb06-0a0ad4b13e96.jpeg">
 <div class="caption"> gorilla tracking</div>
+    <div class="more-content" id="kibale">
   <p>Kibale National Park is one of Africa’s finest tropical rainforests and is widely known as the Primate Capital of the World. Established in 1993, the park covers approximately 795 km² in western Uganda. It is famous for its high concentration of primates, especially chimpanzees.
 
 Location
@@ -1056,10 +1076,15 @@ Popular Activities
 
 Kibale National Park is a must-visit destination for nature lovers and primate enthusiasts. Its rich biodiversity, dense rainforest, and remarkable chimpanzee encounters make it one of Uganda’s top safari destinations.</p>
 </div>
+<button class="explore-btn" onclick="toggleContent('kibale',this)">
 
+Explore More
+
+</button>
 <div class="gallery-item">
 <img src="IMG_3134.jpeg">
 <div class="caption"></div>
+    <div class="more-content" id="mburo">
 <p>Lake Mburo National Park is Uganda’s smallest savannah national park, covering approximately 370 km². It was established in 1983 and is well known for its beautiful lakes, rolling hills, acacia woodlands, and abundant wildlife. It is the only national park in Uganda where you can easily see large herds of impalas and one of the few parks with zebras.
 
 Location
@@ -1115,8 +1140,14 @@ Popular Activities
 
 Lake Mburo National Park is an excellent destination for visitors seeking a short safari from Kampala. Its unique activities, such as walking and horseback safaris, along with its rich wildlife and scenic landscapes, make it one of Uganda’s most accessible and rewarding national parks.</p>
 </div>
+    <button class="explore-btn" onclick="toggleContent('mburo',this)">
+
+Explore More
+
+</button>
 <div class="gallery-item">
 <img src="IMG_3136.jpeg">
+    <div class="more-content" id="mgahinga">
 <p>Mgahinga Gorilla National Park is Uganda’s smallest national park, covering approximately 33.7 km². Established in 1991, the park lies in the southwestern corner of Uganda and forms part of the greater Virunga Conservation Area shared with Rwanda and the Democratic Republic of the Congo.
 
 Location
@@ -1171,13 +1202,18 @@ Popular Activities
 
 Mgahinga Gorilla National Park is a unique destination where visitors can encounter mountain gorillas, track golden monkeys, climb volcanic peaks, and experience the rich culture of the Batwa people, all within a compact but spectacular protected area.</p>
 <div class="caption">
-    
+   <button class="explore-btn" onclick="toggleContent('mgahinga',this)">
+
+Explore More
+
+</button>
 </div>
 </div>
   <div class="gallery-item">
 <img src="IMG_3106.jpeg">
     
 <div class="caption"></div>
+      <div class="more-content" id="elgon">
 <p>Mount Elgon National Park is located in eastern Uganda along the border with Kenya. It protects the ancient Mount Elgon volcano, which is one of the largest extinct volcanoes in the world with a massive caldera at its summit. The park covers about 1,145 square kilometers and is known for its cool climate, caves, waterfalls, hot springs, and rich biodiversity.Location: Eastern Uganda (border with Kenya)
 Size: ~1,145 km²
 Famous for: Hiking, waterfalls, caves, caldera, nature walks
@@ -1191,24 +1227,42 @@ Key Highlights:
 
 Mount Elgon is ideal for hiking, especially multi-day treks that are less strenuous than Rwenzori, offering scenic views, waterfalls, and peaceful forest trails.</p>
 </div>
+    <button class="explore-btn" onclick="toggleContent('elgon',this)">
+
+Explore More
+
+</button>
     <div class="gallery-item">
 <img src="IMG_4498.jpeg">
 <div class="caption"></div>
+        <div class="more-content" id="semuliki">
     <p>Semuliki National Park
 
 Semuliki National Park is a remarkable tropical rainforest located in western Uganda, at the foot of the Rwenzori Mountains. The park is renowned for its rich biodiversity, unique Central African flora and fauna, and the famous Sempaya Hot Springs, where visitors can witness boiling geysers surrounded by lush forest. Semuliki is home to forest elephants, buffaloes, chimpanzees, several monkey species, and more than 440 bird species, making it one of Uganda's top birdwatching destinations. Visitors can enjoy guided nature walks, birdwatching, cultural experiences with the local Batwa community, and explore one of East Africa's oldest and most diverse rainforests.</p>
 </div>
+   <button class="explore-btn" onclick="toggleContent('semuliki',this)">
+
+Explore More
+
+</button>
         <div class="gallery-item">
 <img src="IMG_3105.jpeg">
 <div class="caption"></div>
+            <div class="more-content" id="rwenzori">
     <p>Rwenzori Mountains National Park    </p>
 
  <p>Rwenzori Mountains National Park is a UNESCO World Heritage Site located in western Uganda along the border with the Democratic Republic of the Congo. Famous for the majestic Rwenzori Mountains, also known as the "Mountains of the Moon," the park features Africa's third-highest peak, Margherita Peak, rising to 5,109 meters above sea level. Its stunning landscapes include snow-capped peaks, glaciers, alpine meadows, waterfalls, and unique giant lobelias and groundsels. The park is home to diverse wildlife, including forest elephants, chimpanzees, blue monkeys, and over 200 bird species. Visitors can enjoy world-class mountain trekking, hiking, birdwatching, nature walks, and breathtaking scenery, making Rwenzori Mountains National Park one of Uganda's premier destinations for adventure and nature tourism.
     </p>
             </div>
+  <button class="explore-btn" onclick="toggleContent('rwenzori',this)">
+
+Explore More
+
+</button>  
     <div class="gallery-item">
 <img src="IMG_3135.jpeg">
 <div class="caption"></div>
+        <div class="more-content" id="serengeti">
       <p>Serengeti National Park is one of Africa’s most famous wildlife destinations, located in northern Tanzania. It covers about 14,750 square kilometers and is best known for the Great Migration, where millions of wildebeest, zebras, and gazelles move across the plains in search of fresh grazing and water. It is one of the best places in the world to see big cats in the wild.Location: Northern Tanzania
 Size: ~14,750 km²
 Famous for: Great Wildebeest Migration, big cats, vast savannah plains
@@ -1225,9 +1279,15 @@ The Serengeti hosts the largest terrestrial animal migration on Earth, involving
 
 Serengeti offers classic African safari experiences, including game drives, hot air balloon safaris at sunrise, and dramatic predator-prey interactions across endless golden plains.</p>
 </div>
+    <button class="explore-btn" onclick="toggleContent('serengeti',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_3139.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="ngorongoro">
     <p>Ngorongoro Conservation Area
 
 The Ngorongoro Conservation Area (NCA) is a UNESCO World Heritage Site and protected ecosystem in northern Tanzania. Encompassing 8,292 km², it is famed for the Ngorongoro Crater—the world’s largest unbroken volcanic caldera—and for sustaining both wildlife and the semi-nomadic Maasai people in a rare coexistence of culture and nature.
@@ -1260,10 +1320,15 @@ Climate and best time to visit
 
 At altitudes above 2,000 m, Ngorongoro has a mild tropical highland climate. The dry season (June–October) offers the clearest game viewing and pleasant days around 25 °C, while the wet months (November–May) bring lush landscapes and excellent birdlife  </p>
 </div>
-    </div>
+   <button class="explore-btn" onclick="toggleContent('ngorongoro',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_3144.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="tarangire">
     <p>Tarangire National Park
 
 Tarangire National Park is a protected wildlife area in northern Tanzania, known for its dense elephant population and iconic baobab-dotted savannah. It forms part of Tanzania’s northern safari circuit and is especially valued for its seasonal migration patterns and relatively low visitor numbers compared with larger parks.
@@ -1288,10 +1353,15 @@ Importance and management
 
 Tarangire contributes significantly to Tanzania’s tourism economy and ecological research. Managed by the Tanzania National Parks Authority, it forms part of a broader network of protected ecosystems critical to maintaining northern Tanzania’s wildlife migrations and biodiversity resilience.</p>
 </div>
-    </div>
+   <button class="explore-btn" onclick="toggleContent('tarangire',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_1037.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="nyerere">
     <p>Nyerere National Park
 
 Nyerere National Park is a vast protected area in southern Tanzania and one of Africa’s largest national parks. Established in 2019, it was created from the northern section of the former Selous Game Reserve and named in honour of Julius Nyerere. The park is notable for its rich biodiversity, dramatic landscapes, and relatively low tourist density.
@@ -1316,11 +1386,16 @@ Significance
 
 The park plays a crucial role in protecting southern Tanzania’s ecosystems and contributes to national conservation and tourism goals. Its creation aligns with efforts to diversify Tanzania’s safari circuit beyond the Serengeti National Park and Ngorongoro Conservation Area, promoting sustainable wildlife tourism and regional development.</p>
 </div>
-    </div>
+  <button class="explore-btn" onclick="toggleContent('nyerere',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_3109.jpeg">
 <div class="caption"></div>
       <p>Volcanoes National Park</p>
+      <div class="more-content" id="volcanoes">
     <p>Location: Northwestern Rwanda (Virunga Mountains)
 Famous for: Mountain gorillas and golden monkeys
 
@@ -1337,10 +1412,15 @@ Key experiences:
 Wildlife:
 Mountain gorillas, golden monkeys, forest elephants, buffaloes, bushbucks, and many bird species.</p>
 </div>
-    </div>
+  <button class="explore-btn" onclick="toggleContent('volcanoes',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="d50a9cbc-bf44-4420-879c-83021171bc04.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="nyungwe">
     <p>Nyungwe Forest National Park Location: Southwestern Rwanda
 Famous for: Chimpanzees, rainforest, canopy walk
 
@@ -1357,10 +1437,15 @@ Key experiences:
 Wildlife:
 Chimpanzees, colobus monkeys, L’Hoest’s monkeys, forest birds, butterflies.</p>
 </div>
-    </div>
+<button class="explore-btn" onclick="toggleContent('nyungwet',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_3146.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="akagera">
     <p>Akagera National Park Location: Eastern Rwanda (border with Tanzania)
 Famous for: Big Five safari park
 
@@ -1377,10 +1462,15 @@ Key experiences:
 Wildlife:
 Lions, elephants, rhinos, leopards, buffaloes, hippos, crocodiles, giraffes, zebras.</p>
 </div>
-    </div>
+  <button class="explore-btn" onclick="toggleContent('akagera',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_3138.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="maasai">
     <p>The Maasai Mara National Reserve is one of Kenya’s most famous safari destinations, located in southwestern Kenya along the border with Tanzania and connected to the Serengeti ecosystem. It is world-renowned for its rich wildlife population and the dramatic Great Migration river crossings at the Mara River.Location: Narok County, southwestern Kenya
 Connected ecosystem: Serengeti–Maasai Mara ecosystem
 Famous for: Great Migration, big cats, classic savannah safaris
@@ -1400,10 +1490,15 @@ The reserve is named after the Maasai people, who live in surrounding areas and 
 
 Maasai Mara is considered one of the best safari destinations in the world for close-up wildlife viewing and photography.</p>
 </div>
-    </div>
+ <button class="explore-btn" onclick="toggleContent('maasai',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_0964.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="amboseli">
     <p>Amboseli National Park
 
 Amboseli National Park is a premier wildlife reserve in southern Kenya’s Kajiado County, famed for its vast elephant herds and striking views of Mount Kilimanjaro. Covering 392 km², it forms the heart of a UNESCO Biosphere Reserve and stands among Africa’s most photographed safari landscapes.
@@ -1434,9 +1529,15 @@ Conservation and community
 
 The park anchors the greater Amboseli ecosystem of over 8,000 km², where community conservancies like Kimana and Elerai maintain wildlife corridors. Joint initiatives by KWS, local Maasai, and NGOs such as the Big Life Foundation support anti-poaching, habitat management, and sustainable tourism—ensuring Amboseli remains one of Kenya’s most celebrated natural treasures.</p>
 </div>
+       <button class="explore-btn" onclick="toggleContent('amboseli',this)">
+
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="IMG_2520.jpeg">
 <div class="caption"></div>
+      <div class="more-content" id="tsavo">
     <p>Tsavo East National Park
 Tsavo West National Park
 One of the largest park systems in the world, known for red elephants, lions, lava landscapes, and rugged wilderness. Key facts
@@ -1463,9 +1564,14 @@ Cultural and historical significance
 
 The area holds archaeological sites and stories from the early 20th century, including the construction of the Kenya–Uganda Railway near the man-eaters of Tsavo episode. Today, it stands as a symbol of Kenya’s enduring wildlife heritage and natural beauty.</p>
 </div>
+<button class="explore-btn" onclick="toggleContent('tsavo',this)">
 
+Explore More
+
+</button>
   <div class="gallery-item">
 <img src="f6e91d2e-6796-4c1e-bec6-94637ee16f97.jpeg">
+      <div class="more-content" id="nairobi">
     <p>Nairobi National Park
 
 Nairobi National Park is a wildlife reserve located just south of Kenya’s capital, Nairobi. Established in 1946, it is the country’s first national park and one of the few in the world bordering a major city. The park is notable for its remarkable juxtaposition of wild savannah landscapes against Nairobi’s urban skyline.
@@ -1489,7 +1595,13 @@ Nairobi National Park hosts over 100 mammal species, including lions, leopards, 
 Conservation and significance
 
 The park plays a crucial role in Kenya’s conservation strategy as a sanctuary for endangered species and a living classroom for environmental education. Its proximity to urban Nairobi underscores both the pressures of encroaching development and the success of balancing city growth with wildlife preservation.</p>
-<div class="caption"></div>
+  </div>
+    <button class="explore-btn" onclick="toggleContent('nairobi',this)">
+
+Explore More
+
+</button>
+      <div class="caption">
 </div>
   
 </div>
