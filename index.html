@@ -6,11 +6,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-    html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
+  html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    overflow-x:hidden;
+}
 }
 body{
 margin:0;
@@ -271,8 +272,20 @@ text-align:center;
 margin-top:40px;
     width:100%;
     margin:0;
-    padding:30px 20px;
+    padding:40px 5%;
     box-sizing:border-box;
+}
+    .footer-container{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+    text-align:left;
+}
+
+.footer-box{
+    flex:1;
+    min-width:200px;
 }
 
 @media(max-width:768px){
@@ -1922,6 +1935,7 @@ target="_blank">
 </div>
 <!-- FOOTER -->
 <footer>
+      <div class="footer-container">
   <section class="social-section">
 <h2>Follow Brendava Tours & Travel</h2>
 
