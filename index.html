@@ -630,6 +630,46 @@ img{
 .review-card{
     min-height:180px;
 }
+        .destination-box{
+    width:300px;
+    margin:auto;
+    padding:20px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.5s;
+}
+
+.nav-buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
+
+.modal-content{
+    background:white;
+    width:80%;
+    max-width:500px;
+    margin:10% auto;
+    padding:20px;
+    border-radius:12px;
+}
+
+.close{
+    float:right;
+    font-size:24px;
+    cursor:pointer;
+}
 </style>
 </head>
     <header>
@@ -774,6 +814,35 @@ function selectLodge(lodgeName){
 </div>
 <!-- GALLERY WITH CAPTIONS -->
 <section>
+    <!-- DESTINATION ROTATOR (NEW FEATURE) -->
+<section id="destinationRotator">
+
+  <h2>Top Destinations in Africa</h2>
+
+  <div class="destination-box">
+
+    <h3 id="destTitle"></h3>
+    <p id="destDesc"></p>
+
+    <button class="explore-btn" onclick="openExplore()">Explore More</button>
+
+    <div class="nav-buttons">
+      <button onclick="prevDest()">⬅ Back</button>
+      <button onclick="nextDest()">Next ➡</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- EXPLORE MODAL -->
+<div id="exploreModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeExplore()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+  </div>
+</div>
 <h2>Destinations around africa</h2>
 
 <div class="gallery">
@@ -2017,6 +2086,75 @@ function toggleContent(id, button) {
     content.style.display = isHidden ? "block" : "none";
     button.textContent = isHidden ? "Show Less" : "Explore More";
 }
+</script>
+      <script>
+const destinations = [
+  {
+    title: "Maasai Mara",
+    desc: "Famous for the Great Migration and big cats in Kenya."
+  },
+  {
+    title: "Lake Mburo National Park",
+    desc: "Uganda’s closest savannah park with zebras and impalas."
+  },
+  {
+    title: "Serengeti National Park",
+    desc: "Endless plains and the Great Wildebeest Migration."
+  },
+  {
+    title: "Bwindi Impenetrable Forest",
+    desc: "Home of mountain gorillas in Uganda."
+  }
+];
+
+let i = 0;
+let autoPlay = true;
+let interval;
+
+// SHOW DESTINATION
+function showDest() {
+  document.getElementById("destTitle").innerText = destinations[i].title;
+  document.getElementById("destDesc").innerText = destinations[i].desc;
+}
+
+// NEXT
+function nextDest() {
+  i = (i + 1) % destinations.length;
+  showDest();
+}
+
+// BACK
+function prevDest() {
+  i = (i - 1 + destinations.length) % destinations.length;
+  showDest();
+}
+
+// AUTO ROTATE EVERY 10 SECONDS
+function startAuto() {
+  interval = setInterval(() => {
+    if (autoPlay) nextDest();
+  }, 10000);
+}
+
+// OPEN EXPLORE (PAUSE ROTATION)
+function openExplore() {
+  autoPlay = false;
+
+  document.getElementById("modalTitle").innerText = destinations[i].title;
+  document.getElementById("modalDesc").innerText = destinations[i].desc;
+
+  document.getElementById("exploreModal").style.display = "block";
+}
+
+// CLOSE EXPLORE (RESUME ROTATION)
+function closeExplore() {
+  document.getElementById("exploreModal").style.display = "none";
+  autoPlay = true;
+}
+
+// INIT
+showDest();
+startAuto();
 </script>
 </body>
 </html>
