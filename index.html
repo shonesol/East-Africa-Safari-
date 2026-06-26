@@ -726,7 +726,38 @@ img{
     min-height:180px;
 }
 
-</style>
+#destinationRotator{
+    width:100%;
+    text-align:center;
+    padding:25px 0;
+    overflow:hidden;
+}
+
+.destination-title{
+    font-size:32px;
+    color:#0f766e;
+    font-weight:bold;
+    white-space:nowrap;
+    animation:fade 1s;
+}
+
+.destination-desc{
+    font-size:18px;
+    color:#444;
+    margin-top:10px;
+    animation:fade 1s;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateX(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
 </style>
 </head>
     <header>
@@ -870,19 +901,11 @@ function selectLodge(lodgeName){
 </div>
 </div>
 <!-- GALLERY WITH CAPTIONS -->
-<section>
+
 <section id="destinationRotator">
-
-  <h2>Top Destinations in Africa</h2>
-
-  <div class="destination-box">
-
-    <h3 id="destTitle"></h3>
-
-    <p id="destDesc"></p>
-
-  </div>
-
+    <h2>Top Destinations in Africa</h2>
+<h2 id="destTitle" class="destination-title"></h2>
+<p id="destDesc" class="destination-desc"></p>
 <div class="gallery">
 
 <div class="gallery-item">
@@ -2173,6 +2196,9 @@ function prevDest() {
   i = (i - 1 + destinations.length) % destinations.length;
   showDest();
 }
+        showDest();
+
+interval = setInterval(nextDest, 5000);
       </script>
 </body>
 </html>
