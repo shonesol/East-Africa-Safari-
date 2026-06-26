@@ -1749,35 +1749,56 @@ loadReviews();
 </script>
 
 <!-- EMAILJS (UNCHANGED LOGIC) -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-emailjs.init("sfXnGzmLhepzCRFWS");
-
-document.addEventListener("DOMContentLoaded", function () {
-
-const form = document.getElementById("bookingForm");
-
-if (form) {
-form.addEventListener("submit", function(e){
-e.preventDefault();
-
-emailjs.sendForm(
-"service_7zd9d3k",
-"template_ujlcl24",
-this
-).then(function(){
-
-alert("Booking sent successfully!");
-
-window.open(
-"https://wa.me/+256742254321?text=New%20Safari%20Booking%20from%20website",
-"_blank"
-);
-
+emailjs.init({
+    publicKey: "sfXnGzmLhepzCRFWS"
 });
-});
-}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.getElementById("bookingForm");
+
+    form.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        const btn = this.querySelector("button");
+        btn.disabled = true;
+        btn.innerHTML = "Sending...";
+
+        emailjs.sendForm(
+            "service_7zd9d3k",
+            "template_ujlcl24",
+            this
+        )
+        .then(() => {
+
+            alert("Booking sent successfully!");
+
+            form.reset();
+
+            window.open(
+                "https://wa.me/256742254321?text=New Safari Booking received from the website.",
+                "_blank"
+            );
+
+        })
+        .catch((error)=>{
+
+            console.log(error);
+            alert("Failed to send booking.");
+
+        })
+        .finally(()=>{
+
+            btn.disabled = false;
+            btn.innerHTML = "Send Booking";
+
+        });
+
+    });
 
 });
 </script>
@@ -1787,6 +1808,7 @@ window.open(
 <h2>Safari Booking</h2>
 
 <form id="bookingForm">
+    <input type="hidden" name="to_email" value="brendavatoursandtravel@gmail.com">
 <input type="text" name="name" placeholder="Full Name" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="tel" name="phone" placeholder="Phone Number" required>
@@ -1800,23 +1822,7 @@ href="https://wa.me/+256742254321?text=Hello%20brendava%20tourss%20$travel%2C%20
 target="_blank">
 <i class="fab fa-whatsapp"></i> Chat on WhatsApp
   </a>
-<script>
-  </emailjs.sendForm(
-    "service_7zd9d3k",
-    "template_ujlcl24",
-    this
-).then(function(){
 
-    alert("Booking sent successfully!");
-
-    window.open(
-        "https://wa.me/+256742254321?text=Hello%20Pearl%20Dreams%20Safaris%2C%20I%20have%20just%20submitted%20a%20booking%20from%20the%20website.",
-        "_blank"
-    );
-
-});
-    
-</script>
        <div class="container">
 
     <h2>Uganda Game Parks & Lakes Map</h2>
