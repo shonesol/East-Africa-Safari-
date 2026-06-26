@@ -678,7 +678,11 @@ img{
 
 .gallery-item{
     display:none;
-    animation:fade 1s;
+    width:100%;
+}
+
+.gallery-item.active{
+    display:block;
 }
 
 .gallery-item img{
@@ -1740,27 +1744,7 @@ Explore More
 </div>
   
 </div>
-          <!-- DESTINATION ROTATOR (NEW FEATURE) -->
-<section id="destinationRotator">
-
-  <h2>Top Destinations in Africa</h2>
-
-  <div class="destination-box">
-
-    <h3 id="destTitle"></h3>
-    <p id="destDesc"></p>
-
-    <button class="explore-btn" onclick="openExplore()">Explore More</button>
-
- <div class="nav-buttons">
-    <button onclick="prevDest()">⬅ Previous</button>
-    <button onclick="nextDest()">Next ➡</button>
-</div>
-
-  </div>
-
-</section>
-  
+</section>  
 <!-- REVIEWS (FIREBASE - UNCHANGED) -->
 <section id="reviews-section">
 <h2>Customer Reviews</h2>
@@ -2165,64 +2149,19 @@ function startAuto() {
 <script>
 const items = document.querySelectorAll(".gallery-item");
 let current = 0;
-let autoSlide;
 
-// Hide all
-function showItem(index){
-    items.forEach((item,i)=>{
-        item.style.display = (i===index) ? "block" : "none";
-    });
+function showSlide(index){
+    items.forEach(item => item.classList.remove("active"));
+    items[index].classList.add("active");
 }
 
-function nextItem(){
+showSlide(current);
+
+setInterval(()=>{
     current++;
     if(current>=items.length) current=0;
-    showItem(current);
-}
-
-function prevItem(){
-    current--;
-    if(current<0) current=items.length-1;
-    showItem(current);
-}
-
-function startSlide(){
-    autoSlide = setInterval(nextItem,10000); // 10 seconds
-}
-
-function stopSlide(){
-    clearInterval(autoSlide);
-}
-
-// Start
-showItem(current);
-startSlide();
-
-// Manual buttons
-function nextDest(){
-    stopSlide();
-    nextItem();
-}
-
-function prevDest(){
-    stopSlide();
-    prevItem();
-}
-
-// Explore More
-function toggleContent(id,btn){
-    stopSlide();
-
-    const content=document.getElementById(id);
-
-    if(content.style.display==="block"){
-        content.style.display="none";
-        btn.innerHTML="Explore More";
-    }else{
-        content.style.display="block";
-        btn.innerHTML="Show Less";
-    }
-}
+    showSlide(current);
+},10000);
 </script>
 </body>
 </html>
