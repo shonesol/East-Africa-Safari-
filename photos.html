@@ -79,8 +79,44 @@ to{
 }
 
 }
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
 
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
 
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Lightbox (zoom view) */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
 </style>
 </head>
 
@@ -102,11 +138,22 @@ to{
     </div>
 
 </div>
-        <img class="slide active" src="5457fa89-b554-496e-8167-0132764e46ba.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0571.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0566.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0605.jpeg" alt="Safari">
-    <img class="slide" src="07abd0b2-85af-4dbf-abe9-93353c71af38.jpeg" alt="Safari">
+        <div class="gallery">
+    <img src="photos/img1.jpg" onclick="openImage(this)">
+    <img src="photos/img2.jpg" onclick="openImage(this)">
+    <img src="photos/img3.jpg" onclick="openImage(this)">
+    <img src="photos/img4.jpg" onclick="openImage(this)">
+    <img src="photos/img5.jpg" onclick="openImage(this)">
+    <img src="photos/img6.jpg" onclick="openImage(this)">
+    <img src="photos/img7.jpg" onclick="openImage(this)">
+    <img src="photos/img8.jpg" onclick="openImage(this)">
+    <img src="photos/img9.jpg" onclick="openImage(this)">
+</div>
+
+<!-- Zoom overlay -->
+<div id="lightbox" onclick="closeImage()">
+    <img id="lightbox-img">
+</div>
 
 
 <!-- ABOUT SECTION -->
@@ -153,6 +200,16 @@ function changeSlide(){
 setInterval(changeSlide,6000);
 
 
+</script>
+    <script>
+function openImage(img) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = img.src;
+}
+
+function closeImage() {
+    document.getElementById("lightbox").style.display = "none";
+}
 </script>
 </body>
 </html>
