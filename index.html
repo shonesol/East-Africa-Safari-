@@ -670,6 +670,31 @@ img{
     font-size:24px;
     cursor:pointer;
 }
+        .gallery{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+}
+
+.gallery-item{
+    display:none;
+    animation:fade 1s;
+}
+
+.gallery-item img{
+    width:100%;
+    border-radius:10px;
+}
+
+.more-content{
+    display:none;
+    margin-top:15px;
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
 </style>
 </head>
     <header>
@@ -814,26 +839,6 @@ function selectLodge(lodgeName){
 </div>
 <!-- GALLERY WITH CAPTIONS -->
 <section>
-    <!-- DESTINATION ROTATOR (NEW FEATURE) -->
-<section id="destinationRotator">
-
-  <h2>Top Destinations in Africa</h2>
-
-  <div class="destination-box">
-
-    <h3 id="destTitle"></h3>
-    <p id="destDesc"></p>
-
-    <button class="explore-btn" onclick="openExplore()">Explore More</button>
-
-    <div class="nav-buttons">
-      <button onclick="prevDest()">⬅ Back</button>
-      <button onclick="nextDest()">Next ➡</button>
-    </div>
-
-  </div>
-
-</section>
 
 <!-- EXPLORE MODAL -->
 <div id="exploreModal" class="modal">
@@ -1733,6 +1738,25 @@ Explore More
 </div>
   
 </div>
+          <!-- DESTINATION ROTATOR (NEW FEATURE) -->
+<section id="destinationRotator">
+
+  <h2>Top Destinations in Africa</h2>
+
+  <div class="destination-box">
+
+    <h3 id="destTitle"></h3>
+    <p id="destDesc"></p>
+
+    <button class="explore-btn" onclick="openExplore()">Explore More</button>
+
+ <div class="nav-buttons">
+    <button onclick="prevDest()">⬅ Previous</button>
+    <button onclick="nextDest()">Next ➡</button>
+</div>
+
+  </div>
+
 </section>
   
 <!-- REVIEWS (FIREBASE - UNCHANGED) -->
@@ -2136,25 +2160,67 @@ function startAuto() {
   }, 10000);
 }
 
-// OPEN EXPLORE (PAUSE ROTATION)
-function openExplore() {
-  autoPlay = false;
+<script>
+const items = document.querySelectorAll(".gallery-item");
+let current = 0;
+let autoSlide;
 
-  document.getElementById("modalTitle").innerText = destinations[i].title;
-  document.getElementById("modalDesc").innerText = destinations[i].desc;
-
-  document.getElementById("exploreModal").style.display = "block";
+// Hide all
+function showItem(index){
+    items.forEach((item,i)=>{
+        item.style.display = (i===index) ? "block" : "none";
+    });
 }
 
-// CLOSE EXPLORE (RESUME ROTATION)
-function closeExplore() {
-  document.getElementById("exploreModal").style.display = "none";
-  autoPlay = true;
+function nextItem(){
+    current++;
+    if(current>=items.length) current=0;
+    showItem(current);
 }
 
-// INIT
-showDest();
-startAuto();
+function prevItem(){
+    current--;
+    if(current<0) current=items.length-1;
+    showItem(current);
+}
+
+function startSlide(){
+    autoSlide = setInterval(nextItem,10000); // 10 seconds
+}
+
+function stopSlide(){
+    clearInterval(autoSlide);
+}
+
+// Start
+showItem(current);
+startSlide();
+
+// Manual buttons
+function nextDest(){
+    stopSlide();
+    nextItem();
+}
+
+function prevDest(){
+    stopSlide();
+    prevItem();
+}
+
+// Explore More
+function toggleContent(id,btn){
+    stopSlide();
+
+    const content=document.getElementById(id);
+
+    if(content.style.display==="block"){
+        content.style.display="none";
+        btn.innerHTML="Explore More";
+    }else{
+        content.style.display="block";
+        btn.innerHTML="Show Less";
+    }
+}
 </script>
 </body>
 </html>
