@@ -603,6 +603,26 @@ img{
     border-radius:12px;
 
     box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    .more-content{
+    display:none;
+    margin-top:10px;
+    animation:fadeIn .4s ease;
+}
+
+.explore-btn{
+    background:#0f766e;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+    transition:.3s;
+}
+
+.explore-btn:hover{
+    background:#115e59;
+}
 </style>
 </head>
     <header>
@@ -1911,5 +1931,21 @@ window.addEventListener("DOMContentLoaded", () => {
   applyLanguage(savedLang);
 });
           </script>
+      //explore more
+      <script>
+function toggleContent(id, button){
+
+    const content = document.getElementById(id);
+
+    if(content.style.display === "block"){
+        content.style.display = "none";
+        button.innerHTML = "Explore More";
+    }else{
+        content.style.display = "block";
+        button.innerHTML = "Show Less";
+    }
+
+}
+</script>
 </body>
 </html>
