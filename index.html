@@ -646,7 +646,8 @@ img{
 
 .more-content{
     display:none;
-    margin-top:15px;
+    margin-top:10px;
+    animation:fadeIn 0.4s ease;
 }
 
 @keyframes fade{
@@ -2039,18 +2040,21 @@ window.addEventListener("DOMContentLoaded", () => {
   applyLanguage(savedLang);
 });
           </script>
-      <script>
+   <script>
 function toggleContent(id, button) {
     const content = document.getElementById(id);
 
     if (!content) return;
 
-    const isHidden = getComputedStyle(content).display === "none";
-
-    content.style.display = isHidden ? "block" : "none";
-    button.textContent = isHidden ? "Show Less" : "Explore More";
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        button.innerText = "Explore More";
+    } else {
+        content.style.display = "block";
+        button.innerText = "Show Less";
+    }
 }
-</script>
+   </script>
       <script>
 const destinations = [
   {
@@ -2092,14 +2096,6 @@ function prevDest() {
   i = (i - 1 + destinations.length) % destinations.length;
   showDest();
 }
-
-// AUTO ROTATE EVERY 10 SECONDS
-function startAuto() {
-  interval = setInterval(() => {
-    if (autoPlay) nextDest();
-  }, 10000);
-}
-
 <script>
 const items = document.querySelectorAll(".gallery-item");
 let current = 0;
