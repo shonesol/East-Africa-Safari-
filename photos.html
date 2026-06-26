@@ -6,15 +6,6 @@
 <title>Brendava Tours & Travel</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:Arial, sans-serif;
-}
 
 /* SLIDESHOW */
 .slideshow-container{
@@ -22,6 +13,7 @@ body{
     width:100%;
     height:100vh;
     overflow:hidden;
+    background:black;
 }
 
 .slide{
@@ -32,12 +24,18 @@ body{
     height:100%;
     object-fit:cover;
     opacity:0;
-    transition:opacity 1.5s ease-in-out;
+    transform:scale(1.1);
+    transition:
+        opacity 2s ease-in-out,
+        transform 8s ease-in-out;
 }
 
+/* ACTIVE IMAGE */
 .slide.active{
     opacity:1;
+    transform:scale(1);
 }
+
 
 /* DARK OVERLAY */
 .overlay{
@@ -46,7 +44,7 @@ body{
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.4);
+    background:rgba(0,0,0,0.35);
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -58,68 +56,31 @@ body{
 
 .overlay h1{
     font-size:60px;
-    margin-bottom:15px;
-    text-shadow:0 3px 10px rgba(0,0,0,0.6);
+    animation:fadeUp 2s ease;
 }
 
 .overlay p{
     font-size:24px;
-    margin-bottom:25px;
+    margin:20px;
+    animation:fadeUp 3s ease;
 }
 
-.btn{
-    background:#0f766e;
-    color:white;
-    padding:14px 28px;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;
+
+@keyframes fadeUp{
+
+from{
+    opacity:0;
+    transform:translateY(40px);
 }
 
-.btn:hover{
-    background:#115e59;
-}
-
-/* ABOUT SECTION */
-.about{
-    padding:70px 20px;
-    text-align:center;
-    background:#f8fafc;
-}
-
-.about h2{
-    color:#0f766e;
-    margin-bottom:20px;
-}
-
-.about p{
-    max-width:900px;
-    margin:auto;
-    line-height:1.8;
-    color:#555;
-}
-
-/* FOOTER */
-footer{
-    background:#111827;
-    color:white;
-    text-align:center;
-    padding:30px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-.overlay h1{
-    font-size:36px;
-}
-
-.overlay p{
-    font-size:18px;
+to{
+    opacity:1;
+    transform:translateY(0);
 }
 
 }
+
+
 </style>
 </head>
 
@@ -160,12 +121,15 @@ footer{
 </footer>
 
 <script>
+
 let slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
+
 
 function changeSlide(){
 
     slides[currentSlide].classList.remove("active");
+
 
     currentSlide++;
 
@@ -173,11 +137,16 @@ function changeSlide(){
         currentSlide = 0;
     }
 
+
     slides[currentSlide].classList.add("active");
+
 }
 
-setInterval(changeSlide, 5000);
-</script>
 
+// change every 6 seconds
+setInterval(changeSlide,6000);
+
+
+</script>
 </body>
 </html>
