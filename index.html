@@ -629,14 +629,9 @@ img{
 
 
 .gallery-item{
-    display:none;
+    display:block;
     width:100%;
 }
-
-.gallery-item.active{
-    display:block;
-}
-
 .gallery-item img{
     width:100%;
     border-radius:10px;
@@ -2097,23 +2092,5 @@ function prevDest() {
   showDest();
 }
       </script>
-          
-<script>
-const items = document.querySelectorAll(".gallery-item");
-let current = 0;
-
-function showSlide(index){
-    items.forEach(item => item.classList.remove("active"));
-    items[index].classList.add("active");
-}
-
-showSlide(current);
-
-setInterval(()=>{
-    current++;
-    if(current>=items.length) current=0;
-    showSlide(current);
-},10000);
-</script>
 </body>
 </html>
