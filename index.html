@@ -720,8 +720,10 @@ function toggleMenu(){
             </button>
 
             <div class="dropdown-content">
-
-                <!-- Uganda -->
+            </div>
+            </div>
+            
+                  <!-- Uganda -->
                 <h3>Uganda</h3>
 
                 <div class="sub">
@@ -799,14 +801,6 @@ function selectLodge(lodgeName){
 <!-- GALLERY WITH CAPTIONS -->
 <section>
 
-<!-- EXPLORE MODAL -->
-<div id="exploreModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeExplore()">&times;</span>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-  </div>
-</div>
 <h2>Destinations around africa</h2>
 
 <div class="gallery">
@@ -1656,6 +1650,7 @@ Cultural and historical significance
 
 The area holds archaeological sites and stories from the early 20th century, including the construction of the Kenya–Uganda Railway near the man-eaters of Tsavo episode. Today, it stands as a symbol of Kenya’s enduring wildlife heritage and natural beauty.</p>
 </div>
+ </div>
 <button class="explore-btn" onclick="toggleContent('tsavo',this)">
 
 Explore More
@@ -1904,7 +1899,7 @@ target="_blank">
 
     <img src="IMG_3177.jpeg"   alt="Map of Uganda">
 
-</div
+</div>
 <!-- FOOTER -->
 <footer>
   <section class="social-section">
@@ -1958,7 +1953,7 @@ target="_blank">
 
             <p>Sunday: Closed</p>
 
-        </div
+        </div>
     <div class="payment-methods">
     <h4>We Accept</h4>
 
@@ -2096,6 +2091,8 @@ function prevDest() {
   i = (i - 1 + destinations.length) % destinations.length;
   showDest();
 }
+      </script>
+          
 <script>
 const items = document.querySelectorAll(".gallery-item");
 let current = 0;
