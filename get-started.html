@@ -187,8 +187,8 @@ footer{
     to{opacity:1; transform:translate(-50%,-50%);}
 }
 </style>
+  
 </head>
-
 <body>
 
 <header>
@@ -305,5 +305,53 @@ font-weight:bold;
 z-index:9999;">
 Booking Sent Successfully!
 </div>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script type="module" src="firebase.js"></script>
+
+<script type="module" src="emailjs.js"></script>
+    
+    <script type="module">
+import { saveBooking } from "./firebase.js";
+import { sendEmail } from "./emailjs.js";
+
+const form = document.getElementById("bookingForm");
+const popup = document.getElementById("popup");
+
+form.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        country: document.getElementById("country").value,
+        destination: document.getElementById("destination").value,
+        arrival: document.getElementById("arrival").value,
+        departure: document.getElementById("departure").value,
+        clients: document.getElementById("clients").value,
+        days: document.getElementById("days").value,
+        parks: [...document.getElementById("parks").selectedOptions].map(o=>o.value).join(", "),
+        message: document.getElementById("message").value
+    };
+
+    try{
+        await saveBooking(data);
+        await sendEmail(data);
+
+        popup.style.display = "block";
+
+        setTimeout(()=>{
+            popup.style.display = "none";
+        },3000);
+
+        form.reset();
+
+    }catch(err){
+        alert("Booking failed. Try again.");
+        console.log(err);
+    }
+});
+</script>
 </body>
 </html>
