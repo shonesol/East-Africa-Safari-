@@ -1,9 +1,9 @@
 (function(){
-    emailjs.init("YOUR_PUBLIC_KEY");
+    emailjs.init("pA1qeAlZDgevk8-It");
 })();
 
 export function sendEmail(data){
-    return emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+    return emailjs.send("service_1hlp5ii","__ejs-test-mail-service__",{
         name: data.name,
         email: data.email,
         phone: data.phone,
