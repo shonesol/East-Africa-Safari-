@@ -1,20 +1,29 @@
-(function(){
-    emailjs.init("pA1qeAlZDgevk8-It");
+// Initialize EmailJS
+(function () {
+    emailjs.init({
+        publicKey: "pA1qeAlZDgevk8-It"
+    });
 })();
 
+// Get HTML elements
 const form = document.getElementById("contact-form");
 const status = document.getElementById("status");
 const btn = document.getElementById("submitBtn");
 
+// Send email function
 export function sendEmail(data) {
+
+    // Disable button while sending
     btn.disabled = true;
-    btn.innerText = "Sending... ⏳";
-    status.innerText = "Please wait, sending your request...";
+    btn.innerText = "Sending...";
+
+    status.innerText = "Please wait, sending your booking request...";
     status.style.color = "#0f766e";
 
     return emailjs.send(
         "service_1hlp5ii",
-        "template_vs01t7d
+        "template_vs01t7d",
+        {
             name: data.name,
             email: data.email,
             phone: data.phone,
@@ -28,27 +37,51 @@ export function sendEmail(data) {
             message: data.message
         }
     )
-    .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
+    .then(function (response) {
 
-        status.innerText = "✅ Booking sent successfully! We will contact you soon.";
+        console.log("SUCCESS!", response);
+
+        status.innerText = "✅ Booking request sent successfully. We will contact you shortly.";
         status.style.color = "green";
 
         form.reset();
+
         btn.disabled = false;
         btn.innerText = "Send Booking Request";
 
-        return response;
     })
-    .catch((error) => {
-        console.error("FAILED...", error);
+    .catch(function (error) {
 
-        status.innerText = "❌ Failed to send. Please try again.";
+        console.error("FAILED!", error);
+
+        status.innerText = "❌ Failed to send booking request. Please try again.";
         status.style.color = "red";
 
         btn.disabled = false;
         btn.innerText = "Send Booking Request";
-
-        throw error;
     });
+
 }
+
+// Listen for form submit
+form.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        country: form.country.value,
+        destination: form.destination.value,
+        arrival: form.arrival.value,
+        departure: form.departure.value,
+        clients: form.clients.value,
+        days: form.days.value,
+        parks: form.parks.value,
+        message: form.message.value
+    };
+
+    sendEmail(data);
+
+});
