@@ -1860,105 +1860,120 @@ Explore More
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-query,
-orderBy
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-apiKey: "",
-authDomain: "brendava-tours-and-travel.firebaseapp.com",
-projectId: "brendava-tours-and-travel",
-storageBucket: "brendava-tours-and-travel.firebasestorage.app",
-messagingSenderId: "732703885570",
-appId: "1:732703885570:web:3011a3989d5fe36eb69a1b",
-measurementId: "G-ZC356HMW9C"
+  apiKey: "",
+  authDomain: "brendava-tours-and-travel.firebaseapp.com",
+  projectId: "brendava-tours-and-travel",
+  storageBucket: "brendava-tours-and-travel.firebasestorage.app",
+  messagingSenderId: "732703885570",
+  appId: "1:732703885570:web:3011a3989d5fe36eb69a1b",
+  measurementId: "G-ZC356HMW9C"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// =========================
+// SUBMIT REVIEW
+// =========================
 window.submitReview = async function () {
 
-const name = document.getElementById("reviewName").value;
-const rating = document.getElementById("reviewRating").value;
-const comment = document.getElementById("reviewComment").value;
+  const name = document.getElementById("reviewName").value;
+  const rating = parseInt(document.getElementById("reviewRating").value || 0);
+  const comment = document.getElementById("reviewComment").value;
 
-if (!name || !comment) {
-alert("Please fill all fields");
-return;
-}
+  if (!name || !comment || rating === 0) {
+    alert("Please fill all fields");
+    return;
+  }
 
-await addDoc(collection(db, "reviews"), {
-name,
-rating,
-comment,
-createdAt: Date.now()
-});
+  try {
+    await addDoc(collection(db, "reviews"), {
+      name,
+      rating,
+      comment,
+      createdAt: Date.now()
+    });
 
-document.getElementById("reviewName").value = "";
-document.getElementById("reviewComment").value = "";
+    document.getElementById("reviewName").value = "";
+    document.getElementById("reviewComment").value = "";
+    document.getElementById("reviewRating").value = "";
 
-loadReviews();
+    loadReviews();
+
+  } catch (err) {
+    console.error("Error adding review:", err);
+    alert("Failed to submit review");
+  }
 };
 
+// =========================
+// LOAD REVIEWS
+// =========================
 async function loadReviews() {
 
-const reviewsContainer = document.getElementById("reviewsContainer");
+  const reviewsContainer = document.getElementById("reviewsContainer");
 
-const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
-const snapshot = await getDocs(q);
+  try {
+    const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
+    const snapshot = await getDocs(q);
 
-const reviews = [];
+    const reviews = [];
 
-snapshot.forEach((doc) => {
-    reviews.push(doc.data());
-});
+    snapshot.forEach((doc) => {
+      reviews.push(doc.data());
+    });
 
-if(reviews.length === 0){
-    reviewsContainer.innerHTML = "<p>No reviews yet.</p>";
-    return;
-}
+    if (reviews.length === 0) {
+      reviewsContainer.innerHTML = "<p>No reviews yet.</p>";
+      return;
+    }
 
-let current = 0;
+    let current = 0;
 
-function showReview(){
+    function showReview() {
+      const review = reviews[current];
 
-    const review = reviews[current];
+      reviewsContainer.style.opacity = "0";
 
-    reviewsContainer.style.opacity = "0";
-
-    setTimeout(()=>{
+      setTimeout(() => {
+        const stars = "⭐".repeat(Number(review.rating) || 0);
 
         reviewsContainer.innerHTML = `
-        <div class="review-card">
+          <div class="review-card">
             <h4>${review.name}</h4>
-            <p>${"⭐".repeat(review.rating)}</p>
+            <p>${stars}</p>
             <p>${review.comment}</p>
-        </div>
+          </div>
         `;
 
         reviewsContainer.style.opacity = "1";
 
-        current++;
+        current = (current + 1) % reviews.length;
 
-        if(current >= reviews.length){
-            current = 0;
-        }
+      }, 400);
+    }
 
-    },500);
+    showReview();
+    setInterval(showReview, 5000);
+
+  } catch (err) {
+    console.error("Error loading reviews:", err);
+    reviewsContainer.innerHTML = "<p>Failed to load reviews.</p>";
+  }
 }
 
-showReview();
+loadReviews();
 
-setInterval(showReview,5000);
-
-}
 </script>
-
 <!-- EMAILJS (UNCHANGED LOGIC) -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
