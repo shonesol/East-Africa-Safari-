@@ -2,11 +2,19 @@
     emailjs.init("pA1qeAlZDgevk8-It");
 })();
 
+const form = document.getElementById("contact-form");
+const status = document.getElementById("status");
+const btn = document.getElementById("submitBtn");
+
 export function sendEmail(data) {
+    btn.disabled = true;
+    btn.innerText = "Sending... ⏳";
+    status.innerText = "Please wait, sending your request...";
+    status.style.color = "#0f766e";
+
     return emailjs.send(
         "service_1hlp5ii",
-        "__ejs-test-mail-service__",
-        {
+        "template_vs01t7d
             name: data.name,
             email: data.email,
             phone: data.phone,
@@ -22,12 +30,25 @@ export function sendEmail(data) {
     )
     .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
-        alert("✅ Message sent successfully! We will contact you soon.");
+
+        status.innerText = "✅ Booking sent successfully! We will contact you soon.";
+        status.style.color = "green";
+
+        form.reset();
+        btn.disabled = false;
+        btn.innerText = "Send Booking Request";
+
         return response;
     })
     .catch((error) => {
         console.error("FAILED...", error);
-        alert("❌ Message failed to send. Please try again.");
+
+        status.innerText = "❌ Failed to send. Please try again.";
+        status.style.color = "red";
+
+        btn.disabled = false;
+        btn.innerText = "Send Booking Request";
+
         throw error;
     });
 }
