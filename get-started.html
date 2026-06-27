@@ -1,1 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started - Brendava Tours & Travel</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:Inter, sans-serif;
+    background:#F5F7FA;
+    color:#333;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('images/hero.jpg');
+    background-size:cover;
+    background-position:center;
+    height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:white;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+nav h2{
+    font-weight:800;
+    color:white;
+}
+
+.nav-buttons a{
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:700;
+    margin-left:10px;
+}
+
+.get-started{
+    background:#0F766E;
+    color:white;
+}
+
+.home-btn{
+    background:#25D366;
+    color:white;
+}
+
+/* HERO TEXT */
+.hero{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.hero h1{
+    font-size:48px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-top:10px;
+    min-height:40px;
+    transition:all 0.5s ease;
+}
+
+/* SLIDERS */
+.slider-container{
+    display:flex;
+    justify-content:space-around;
+    margin:40px 20px;
+    gap:20px;
+}
+
+.slider{
+    width:48%;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.slider img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+/* BOOKING FORM */
+.booking{
+    max-width:1000px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.booking h2{
+    text-align:center;
+    font-size:32px;
+    font-weight:800;
+    color:#111827;
+}
+
+form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:20px;
+}
+
+form input, form select, form textarea{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:none;
+}
+
+form textarea{
+    grid-column:span 2;
+}
+
+button{
+    grid-column:span 2;
+    padding:14px;
+    background:#0F766E;
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#115E59;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111827;
+    color:white;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    form{
+        grid-template-columns:1fr;
+    }
+
+    .slider-container{
+        flex-direction:column;
+    }
+
+    .slider{
+        width:100%;
+    }
+}
+  select[multiple]{
+    height:120px;
+}
+
+#popup{
+    animation:fade 0.5s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translate(-50%,-60%);}
+    to{opacity:1; transform:translate(-50%,-50%);}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h2>BRENDAVA TOURS</h2>
+        <div class="nav-buttons">
+            <a href="index.html" class="home-btn">Go Home</a>
+            <a href="#" class="get-started">Get Started</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>GET STARTED</h1>
+        <p id="changingText">DISCOVER EAST AFRICA</p>
+    </div>
+</header>
+
+<!-- SLIDERS -->
+<section class="slider-container">
+
+    <div class="slider">
+        <img id="slider1" src="images/1.jpg">
+    </div>
+
+    <div class="slider">
+        <img id="slider2" src="images/2.jpg">
+    </div>
+
+</section>
+
+<!-- BOOKING -->
+<section class="booking">
+    <h2>BOOK YOUR SAFARI</h2>
+
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email Address" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+
+    <input type="text" id="country" placeholder="Country of Residence">
+    <input type="text" id="destination" placeholder="Destination Country">
+
+    <input type="date" id="arrival" required>
+    <input type="date" id="departure" required>
+
+    <input type="number" id="clients" placeholder="Number of Clients">
+    <input type="number" id="days" placeholder="Number of Days">
+
+    <select id="parks" multiple>
+        <option>Maasai Mara</option>
+        <option>Serengeti</option>
+        <option>Ngorongoro</option>
+        <option>Queen Elizabeth</option>
+        <option>Murchison Falls</option>
+        <option>Bwindi</option>
+        <option>Kibale</option>
+        <option>Amboseli</option>
+        <option>Tsavo</option>
+        <option>Lake Manyara</option>
+    </select>
+
+    <textarea id="message" rows="4" placeholder="Additional Message"></textarea>
+
+    <button type="submit">SEND BOOKING</button>
+</form>
+</section>
+
+<footer>
+    © 2026 Brendava Tours & Travel | All Rights Reserved
+</footer>
+
+<script>
+/* TEXT ANIMATION */
+const texts = [
+    "DISCOVER EAST AFRICA",
+    "EXPLORE WILDLIFE ADVENTURES",
+    "LUXURY SAFARI EXPERIENCES",
+    "YOUR JOURNEY STARTS HERE"
+];
+
+let i = 0;
+setInterval(() => {
+    i = (i + 1) % texts.length;
+    document.getElementById("changingText").innerText = texts[i];
+}, 5000);
+
+/* IMAGE SLIDER */
+const images1 = ["images/1.jpg","images/2.jpg","images/3.jpg"];
+const images2 = ["images/4.jpg","images/5.jpg","images/6.jpg"];
+
+let s1 = 0, s2 = 0;
+
+setInterval(()=>{
+    s1 = (s1 + 1) % images1.length;
+    document.getElementById("slider1").src = images1[s1];
+},5000);
+
+setInterval(()=>{
+    s2 = (s2 + 1) % images2.length;
+    document.getElementById("slider2").src = images2[s2];
+},5000);
+</script>
+<div id="popup" style="
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#0F766E;
+color:white;
+padding:20px 30px;
+border-radius:10px;
+display:none;
+font-weight:bold;
+z-index:9999;">
+Booking Sent Successfully!
+</div>
+  <!-- FIREBASE (LAST BEFORE CLOSING BODY TAG) -->
+
+<script type="module" src="firebase.js">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export async function saveBooking(data){
+  await addDoc(collection(db,"bookings"), data);
+}
+</script>
+  <script>
+    (function(){
+emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
+export function sendEmail(data){
+
+  return emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
+    country: data.country,
+    destination: data.destination,
+    arrival: data.arrival,
+    departure: data.departure,
+    clients: data.clients,
+    days: data.days,
+    parks: data.parks,
+    message: data.message
+  });
+}
+  </script>
+  <script>
+    import { saveBooking } from "./firebase.js";
+import { sendEmail } from "./emailjs.js";
+
+const form = document.getElementById("bookingForm");
+const popup = document.getElementById("popup");
+
+form.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        country: document.getElementById("country").value,
+        destination: document.getElementById("destination").value,
+        arrival: document.getElementById("arrival").value,
+        departure: document.getElementById("departure").value,
+        clients: document.getElementById("clients").value,
+        days: document.getElementById("days").value,
+        parks: [...document.getElementById("parks").selectedOptions].map(o=>o.value).join(", "),
+        message: document.getElementById("message").value
+    };
+
+    try{
+        await saveBooking(data);
+        await sendEmail(data);
+
+        popup.style.display="block";
+
+        setTimeout(()=>{
+            popup.style.display="none";
+        },3000);
+
+        form.reset();
+
+    }catch(err){
+        alert("Error sending booking. Try again.");
+        console.log(err);
+    }
+});
+  </script>
+</body>
+</html>
