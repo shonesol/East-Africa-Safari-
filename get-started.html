@@ -88,13 +88,30 @@ nav h2{
     gap:20px;
 }
 
-.slider{
-    width:48%;
-    overflow:hidden;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+.slider {
+  width: 100%;
+  max-width: 900px;   /* adjust if needed */
+  height: 500px;      /* adjust height */
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
 .slider img{
     width:100%;
     height:300px;
@@ -221,33 +238,16 @@ footer{
 <!-- SLIDERS -->
 <section class="slider-container">
     <div class="slider">
-   <img class="slide active" src="5457fa89-b554-496e-8167-0132764e46ba.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0571.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0566.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0605.jpeg" alt="Safari">
-    <img class="slide" src="07abd0b2-85af-4dbf-abe9-93353c71af38.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0566.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0571.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0605.jpeg" alt="Safari">
-    <img class="slide" src="IMG_0964.jpeg" alt="Safari">
-    <img class="slide" src="IMG_1037.jpeg" alt="Safari">
-    <img class="slide" src="IMG_2520.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3105.jpeg" alt="Safari">
-    <img class="slide"src="IMG_3106.jpeg" alt="Safari">
-  
-
-    </div>
-    <div class="slider">
-          <img class="slide" src="IMG_3108.jpeg" alt="Safari">
+  <img class="slide" src="IMG_3108.jpeg" alt="Safari">
   <img class="slide" src="IMG_3109.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3134.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3135.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3136.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3138.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3139.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3144.jpeg" alt="Safari">
-    <img class="slide" src="IMG_3146.jpeg" alt="Safari">
-    </div>
+  <img class="slide" src="IMG_3134.jpeg" alt="Safari">
+  <img class="slide" src="IMG_3135.jpeg" alt="Safari">
+  <img class="slide" src="IMG_3136.jpeg" alt="Safari">
+  <img class="slide" src="IMG_3138.jpeg" alt="Safari">
+  <img class="slide" src="IMG_3139.jpeg" alt="Safari">
+  <img class="slide" src="IMG_3144.jpeg" alt="Safari">
+  <img class="slide" src="IMG_3146.jpeg" alt="Safari">
+</div>
 </section>
 
 <!-- BOOKING -->
@@ -419,6 +419,25 @@ form.addEventListener("submit",async(e)=>{
     }
 });
 </script>
+<script>
+  let index = 0;
+  const slides = document.querySelectorAll(".slide");
 
+  function showSlide(i) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[i].classList.add("active");
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  // initialize first slide
+  showSlide(index);
+
+  // change every 5 seconds
+  setInterval(nextSlide, 5000);
+</script>
 </body>
 </html>
