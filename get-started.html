@@ -7,15 +7,16 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
 body{
     margin:0;
     font-family:Inter, sans-serif;
-    background:#f5f1e6; /* BEIGE BACKGROUND */
+    background:#f5f1e6;
     color:#333;
 }
 
-/* HEADER */
 header{
     background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
     url('IMG_0566.jpeg');
@@ -28,23 +29,10 @@ header{
     color:white;
 }
 
-/* NAV */
 nav{
     display:flex;
-    justify-content:space-between; /* LEFT & RIGHT */
-    align-items:center;
+    justify-content:space-between;
     padding:20px 40px;
-}
-
-nav h2{
-    font-weight:800;
-    color:white;
-}
-
-/* BUTTONS */
-.nav-buttons{
-    display:flex;
-    gap:10px;
 }
 
 .nav-buttons a{
@@ -54,71 +42,13 @@ nav h2{
     font-weight:700;
 }
 
-.home-btn{
-    background:#25D366;
-    color:white;
-}
+.home-btn{background:#25D366;color:white;}
+.get-started{background:#0F766E;color:white;}
 
-.get-started{
-    background:#0F766E;
-    color:white;
-}
+.hero{text-align:center;margin-bottom:60px;}
+.hero h1{font-size:48px;font-weight:800;}
+.hero p{font-size:18px;margin-top:10px;}
 
-/* HERO */
-.hero{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.hero h1{
-    font-size:48px;
-    font-weight:800;
-}
-
-.hero p{
-    font-size:18px;
-    margin-top:10px;
-}
-
-/* SLIDERS */
-.slider-container{
-    display:flex;
-    justify-content:space-around;
-    margin:40px 20px;
-    gap:20px;
-}
-
-.slider {
-  width: 100%;
-  max-width: 900px;   /* adjust if needed */
-  height: 500px;      /* adjust height */
-  margin: auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
-}
-.slider img{
-    width:100%;
-    height:300px;
-    object-fit:cover;
-}
-
-/* BOOKING */
 .booking{
     max-width:1000px;
     margin:50px auto;
@@ -128,51 +58,22 @@ nav h2{
     box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-.booking h2{
-    text-align:center;
-    font-size:32px;
-    font-weight:800;
-}
-
-/* FORM */
 form{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:15px;
-    margin-top:20px;
 }
 
-/* LABELS */
-label{
-    font-weight:600;
-    font-size:14px;
-    margin-bottom:5px;
-    display:block;
-}
-
-.field{
-    display:flex;
-    flex-direction:column;
-}
+.field{display:flex;flex-direction:column;}
 
 input, select, textarea{
     padding:12px;
     border:1px solid #ddd;
     border-radius:8px;
-    outline:none;
 }
 
-/* TEXTAREA FULL WIDTH */
-textarea{
-    grid-column:span 2;
-}
+textarea{grid-column:span 2;}
 
-/* MULTI SELECT */
-select[multiple]{
-    height:120px;
-}
-
-/* BUTTON */
 button{
     grid-column:span 2;
     padding:14px;
@@ -185,152 +86,9 @@ button{
     cursor:pointer;
 }
 
-button:hover{
-    background:#115E59;
-}
+button:hover{background:#115E59;}
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:20px;
-    background:#111827;
-    color:white;
-    margin-top:50px;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    form{
-        grid-template-columns:1fr;
-    }
-    .slider-container{
-        flex-direction:column;
-    }
-    .slider{
-        width:100%;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <nav>
-        <div class="nav-buttons" style="justify-content:flex-start;">
-            <a href="index.html" class="home-btn">⬅ Go Home</a>
-        </div>
-
-      
-
-        <div class="nav-buttons" style="justify-content:flex-end;">
-            <a href="#" class="get-started">Get Started ➜</a>
-        </div>
-    </nav>
-
-    <div class="hero">
-        <h1>GET STARTED</h1>
-        <p id="changingText">DISCOVER EAST AFRICA</p>
-    </div>
-      <h2>BRENDAVA TOURS & TRAVELS</h2>
-</header>
-
-<!-- SLIDERS -->
-<section class="slider-container">
-    <div class="slider">
-  <img class="slide" src="IMG_3108.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3109.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3134.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3135.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3136.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3138.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3139.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3144.jpeg" alt="Safari">
-  <img class="slide" src="IMG_3146.jpeg" alt="Safari">
- </div>
-    <p>Discover the beauty of Africa with unforgettable safari experiences designed just for you. From breathtaking wildlife encounters to stunning landscapes and rich cultural adventures, every journey with Brendava is crafted to create lifelong memories. Whether you’re planning a short getaway or a full safari expedition, we are here to guide you every step of the way. Start your adventure today and let nature tell its story through you.</p>
-</section>
-<section class="booking">
-    <h2>BOOK YOUR SAFARI</h2>
-
-<form id="bookingForm">
-
-    <div class="field">
-        <label>Full Name *</label>
-        <input type="text" id="name" required>
-    </div>
-
-    <div class="field">
-        <label>Email Address *</label>
-        <input type="email" id="email" required>
-    </div>
-
-    <div class="field">
-        <label>Phone Number *</label>
-        <input type="text" id="phone" required>
-    </div>
-
-    <div class="field">
-        <label>Country of Residence</label>
-        <input type="text" id="country">
-    </div>
-
-    <div class="field">
-        <label>Destination Country</label>
-        <input type="text" id="destination">
-    </div>
-
-    <div class="field">
-        <label>Arrival Date *</label>
-        <input type="date" id="arrival" required>
-    </div>
-
-    <div class="field">
-        <label>Departure Date *</label>
-        <input type="date" id="departure" required>
-    </div>
-
-    <div class="field">
-        <label>Number of Clients</label>
-        <input type="number" id="clients">
-    </div>
-
-    <div class="field">
-        <label>Number of Days</label>
-        <input type="number" id="days">
-    </div>
-
-    <div class="field" style="grid-column:span 2;">
-        <label>Select Parks / Destinations (Hold Ctrl to select multiple)</label>
-        <select id="parks" multiple>
-            <option>Maasai Mara</option>
-            <option>Serengeti</option>
-            <option>Ngorongoro</option>
-            <option>Queen Elizabeth</option>
-            <option>Murchison Falls</option>
-            <option>Bwindi</option>
-            <option>Kibale</option>
-            <option>Amboseli</option>
-            <option>Tsavo</option>
-            <option>Lake Manyara</option>
-        </select>
-    </div>
-
-    <div class="field" style="grid-column:span 2;">
-        <label>Additional Message</label>
-        <textarea id="message" rows="4"></textarea>
-    </div>
-
- <button type="submit" id="submitBtn">SEND BOOKING</button>
-</form>
-</section>
-
-<footer>
-    © 2026 Brendava Tours & Travel | All Rights Reserved
-</footer>
-
-<!-- POPUP -->
-<div id="popup" style="
+#popup{
 position:fixed;
 top:50%;
 left:50%;
@@ -341,102 +99,121 @@ padding:20px 30px;
 border-radius:10px;
 display:none;
 font-weight:bold;
-z-index:9999;">
-Booking Sent Successfully!
+z-index:9999;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="nav-buttons">
+        <a href="index.html" class="home-btn">⬅ Go Home</a>
+    </div>
+    <div class="nav-buttons">
+        <a href="#" class="get-started">Get Started</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1>GET STARTED</h1>
+    <p id="changingText">DISCOVER EAST AFRICA</p>
 </div>
+</header>
+
+<section class="booking">
+<h2>BOOK YOUR SAFARI</h2>
+
+<form id="bookingForm">
+
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="text" id="phone" placeholder="Phone" required>
+<input type="text" id="country" placeholder="Country">
+<input type="text" id="destination" placeholder="Destination">
+<input type="date" id="arrival" required>
+<input type="date" id="departure" required>
+<input type="number" id="clients" placeholder="Clients">
+<input type="number" id="days" placeholder="Days">
+
+<select id="parks" multiple style="grid-column:span 2;">
+    <option>Maasai Mara</option>
+    <option>Serengeti</option>
+    <option>Queen Elizabeth</option>
+    <option>Murchison Falls</option>
+</select>
+
+<textarea id="message" placeholder="Message"></textarea>
+
+<button type="submit">SEND BOOKING</button>
+
+</form>
+</section>
+
+<div id="popup">Booking Sent Successfully!</div>
 
 <script>
-const texts = [
-    "DISCOVER EAST AFRICA",
-    "EXPLORE WILDLIFE ADVENTURES",
-    "LUXURY SAFARI EXPERIENCES",
-    "YOUR JOURNEY STARTS HERE"
+// TEXT CHANGER
+const texts=[
+"DISCOVER EAST AFRICA",
+"EXPLORE WILDLIFE",
+"LUXURY SAFARIS",
+"YOUR JOURNEY STARTS HERE"
 ];
 
-let i = 0;
+let i=0;
 setInterval(()=>{
-    i = (i+1)%texts.length;
-    document.getElementById("changingText").innerText = texts[i];
-},5000);
+i=(i+1)%texts.length;
+document.getElementById("changingText").innerText=texts[i];
+},4000);
 
-const images1=["images/1.jpg","images/2.jpg","images/3.jpg"];
-const images2=["images/4.jpg","images/5.jpg","images/6.jpg"];
+// EMAILJS INIT (FIXED)
+emailjs.init("pA1qeAlZDgevk8-It");
 
-let s1=0,s2=0;
-
-setInterval(()=>{
-    s1=(s1+1)%images1.length;
-    document.getElementById("slider1").src=images1[s1];
-},5000);
-
-setInterval(()=>{
-    s2=(s2+1)%images2.length;
-    document.getElementById("slider2").src=images2[s2];
-},5000);
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="module" src="firebase.js"></script>
-<script type="module" src="emailjs.js"></script>
-
-<script type="module">
-import { saveBooking } from "./firebase.js";
-import { sendEmail } from "./emailjs.js";
-
+// FORM SUBMIT
 const form=document.getElementById("bookingForm");
 const popup=document.getElementById("popup");
 
 form.addEventListener("submit",async(e)=>{
-    e.preventDefault();
+e.preventDefault();
 
-    const data={
-        name:document.getElementById("name").value,
-        email:document.getElementById("email").value,
-        phone:document.getElementById("phone").value,
-        country:document.getElementById("country").value,
-        destination:document.getElementById("destination").value,
-        arrival:document.getElementById("arrival").value,
-        departure:document.getElementById("departure").value,
-        clients:document.getElementById("clients").value,
-        days:document.getElementById("days").value,
-        parks:[...document.getElementById("parks").selectedOptions].map(o=>o.value).join(", "),
-        message:document.getElementById("message").value
-    };
+const data={
+name:document.getElementById("name").value,
+email:document.getElementById("email").value,
+phone:document.getElementById("phone").value,
+country:document.getElementById("country").value,
+destination:document.getElementById("destination").value,
+arrival:document.getElementById("arrival").value,
+departure:document.getElementById("departure").value,
+clients:document.getElementById("clients").value,
+days:document.getElementById("days").value,
+parks:[...document.getElementById("parks").selectedOptions].map(o=>o.value).join(", "),
+message:document.getElementById("message").value
+};
 
-    try{
-        await saveBooking(data);
-        await sendEmail(data);
+try{
 
-        popup.style.display="block";
-        setTimeout(()=>popup.style.display="none",3000);
+const res = await emailjs.send(
+"service_1hlp5ii",
+"template_vs01t7d",
+data
+);
 
-        form.reset();
+console.log("Email sent:", res.status, res.text);
 
-    }catch(err){
-        alert("Booking failed. Try again.");
-        console.log(err);
-    }
+popup.style.display="block";
+setTimeout(()=>popup.style.display="none",3000);
+
+form.reset();
+
+}catch(err){
+console.error("FAILED:", err);
+alert("Email failed. Check console.");
+}
+
 });
 </script>
-<script>
-  let index = 0;
-  const slides = document.querySelectorAll(".slide");
 
-  function showSlide(i) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[i].classList.add("active");
-  }
-
-  function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-  }
-
-  // initialize first slide
-  showSlide(index);
-
-  // change every 5 seconds
-  setInterval(nextSlide, 5000);
-</script>
 </body>
 </html>
