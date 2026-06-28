@@ -419,8 +419,6 @@ grid-template-columns:1fr;
 .card{
 width:90%;
 }
-
-}
   .menu{
 display:flex;
 gap:10px;
@@ -1594,29 +1592,27 @@ function toggleContent(id, button) {
 }
    </script>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
     const gallery = document.querySelector("#destinationRotator .gallery");
     const slides = document.querySelectorAll("#destinationRotator .gallery-item");
 
-    let currentSlide = 0;
+    let current = 0;
+    const total = slides.length;
 
-    function showSlide() {
-        gallery.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
+    function moveSlider(){
+        gallery.style.transform = `translateX(-${current * 100}%)`;
 
-    function nextSlide() {
-        currentSlide++;
+        current++;
 
-        if (currentSlide >= slides.length) {
-            currentSlide = 0;
+        if(current >= total){
+            current = 0;
         }
-
-        showSlide();
     }
 
-    showSlide();
-    setInterval(nextSlide, 5000);
+    moveSlider();
+
+    setInterval(moveSlider,5000);
 
 });
 </script>
