@@ -290,12 +290,21 @@ text-align:center;
 }
 
 .gallery-item{
-background:white;
-border-radius:0px;
-overflow:hidden;
-box-shadow:none;
-transition:.4s;
-position:relative;
+    display:none;
+    opacity:0;
+    transform:translateX(30px);
+    transition:opacity .8s ease, transform .8s ease;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    position:relative;
+}
+
+.gallery-item.active{
+    display:block;
+    opacity:1;
+    transform:translateX(0);
 }
 .gallery-item:hover{
 transform:translateY(-8px);
@@ -2329,74 +2338,31 @@ function toggleContent(id, button) {
 }
    </script>
       <script>
-const destinations = [
-  {
-    title: "Maasai Mara",
-    desc: "Famous for the Great Migration and big cats in Kenya."
-  },
-  {
-    title: "Lake Mburo National Park",
-    desc: "Uganda’s closest savannah park with zebras and impalas."
-  },
-  {
-    title: "Serengeti National Park",
-    desc: "Endless plains and the Great Wildebeest Migration."
-  },
-  {
-    title: "Bwindi Impenetrable Forest",
-    desc: "Home of mountain gorillas in Uganda."
-  }
-];
+document.addEventListener("DOMContentLoaded", () => {
 
-let i = 0;
-let autoPlay = true;
-let interval;
+    const items = document.querySelectorAll("#destinationRotator .gallery-item");
+    let currentIndex = 0;
 
-// SHOW DESTINATION
-function showDest() {
-  document.getElementById("destTitle").innerText = destinations[i].title;
-  document.getElementById("destDesc").innerText = destinations[i].desc;
-}
+    function showItem(index){
 
-// NEXT
-function nextDest() {
-  i = (i + 1) % destinations.length;
-  showDest();
-}
+        items.forEach(item=>{
+            item.classList.remove("active");
+        });
 
-// BACK
-function prevDest() {
-  i = (i - 1 + destinations.length) % destinations.length;
-  showDest();
-}
-        showDest();
+        items[index].classList.add("active");
+    }
 
-interval = setInterval(nextDest, 5000);
-      </script>
-  <script>
-let currentIndex = 0;
-
-const items = document.querySelectorAll("#destinationRotator .gallery-item");
-
-function showItem(index) {
-    items.forEach((item, i) => {
-        item.classList.remove("active");
-        if (i === index) {
-            item.classList.add("active");
-        }
-    });
-}
-
-function nextItem() {
-    currentIndex = (currentIndex + 1) % items.length;
     showItem(currentIndex);
-}
 
-// start
-showItem(currentIndex);
+    setInterval(()=>{
+        currentIndex++;
+        if(currentIndex >= items.length){
+            currentIndex = 0;
+        }
+        showItem(currentIndex);
+    },5000);
 
-// change every 5 seconds
-setInterval(nextItem, 5000);
+});
 </script>
 </body>
 </html>
