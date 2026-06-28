@@ -242,54 +242,60 @@ text-align:center;
 }
   }
 
-/* GALLERY *//* DESTINATION SLIDER */
+/*/* DESTINATION SLIDER */
+
+#destinationRotator{
+    width:100%;
+    overflow:hidden;
+    background:#f5f7fa;
+    padding:40px 0;
+}
 
 .gallery{
     display:flex;
     width:100%;
-    overflow:hidden;
-    transition:transform .8s ease-in-out;
+    transition:transform 1s ease-in-out;
 }
 
 .gallery-item{
-    min-width:100%;
     flex:0 0 100%;
-    box-sizing:border-box;
+    width:100%;
     padding:20px;
-    background:#fff;
-    border-radius:15px;
+    box-sizing:border-box;
     text-align:center;
 }
 
 .gallery-item img{
     width:100%;
-    height:380px;
+    max-width:900px;
+    height:450px;
     object-fit:cover;
     border-radius:15px;
     display:block;
+    margin:auto;
 }
 
 .gallery-item h3{
     color:#0f766e;
-    margin:15px 0 10px;
+    margin:20px 0 10px;
+    font-size:30px;
 }
 
 .gallery-item p{
-    color:#555;
-    line-height:1.7;
+    max-width:850px;
+    margin:auto;
+    line-height:1.8;
+    font-size:18px;
+    color:#444;
 }
 
 .more-content{
     display:none;
-    margin-top:10px;
+    margin-top:15px;
 }
 
-.gallery-item p{
-padding:20px;
-line-height:1.8;
-color:#444;
-font-size:15px;
-text-align:center;
+.explore-btn{
+    margin-top:15px;
 }
 
 .caption{
@@ -1591,28 +1597,29 @@ function toggleContent(id, button) {
     }
 }
    </script>
-    <script>
-document.addEventListener("DOMContentLoaded", () => {
+    <script>document.addEventListener("DOMContentLoaded", () => {
 
     const gallery = document.querySelector("#destinationRotator .gallery");
     const slides = document.querySelectorAll("#destinationRotator .gallery-item");
 
     let current = 0;
-    const total = slides.length;
 
-    function moveSlider(){
-        gallery.style.transform = `translateX(-${current * 100}%)`;
-
-        current++;
-
-        if(current >= total){
-            current = 0;
-        }
+    function showSlide(index){
+        gallery.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    moveSlider();
+    showSlide(current);
 
-    setInterval(moveSlider,5000);
+    setInterval(() => {
+        current++;
+
+        if(current >= slides.length){
+            current = 0;
+        }
+
+        showSlide(current);
+
+    },5000);
 
 });
 </script>
