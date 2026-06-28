@@ -166,99 +166,62 @@ text-align:center;
 
 /* DESTINATION CARDS */
 #destinationRotator{
-
     width:100%;
-
     text-align:center;
-
     padding:40px 0;
-
     overflow:hidden;
-
     background:#f5f7fa;
-
     position:relative;
-
 }
 
 /* each slide */
 
 .destination-slide{
-
     display:none;
-
     opacity:0;
-
     transform:translateY(20px);
-
     transition:all 0.8s ease;
-
 }
 
 /* active slide */
 
 .destination-slide.active{
-
     display:block;
-
     opacity:1;
-
     transform:translateY(0);
-
 }
 
 /* title */
 
 .destination-title{
-
     font-size:32px;
-
     color:#0f766e;
-
     font-weight:800;
-
     margin-bottom:10px;
-
     animation:fadeIn 1s ease;
-
 }
 
 /* description */
 
 .destination-desc{
-
     font-size:18px;
-
     color:#444;
-
     max-width:800px;
-
     margin:0 auto;
-
     line-height:1.6;
-
     animation:fadeIn 1s ease;
-
 }
 
 /* fade animation */
 
 @keyframes fadeIn{
-
     from{
-
         opacity:0;
-
         transform:translateY(20px);
-
     }
-
     to{
-
         opacity:1;
-
         transform:translateY(0);
-
     }
 .destinations{
 display:flex;
@@ -287,6 +250,8 @@ text-align:center;
     margin:0;
     width:100%;
     box-sizing:border-box;
+    display:flex;
+    transition:transform 0.8s ease-in-out;
 }
 
 .gallery-item{
@@ -299,6 +264,10 @@ text-align:center;
     overflow:hidden;
     box-shadow:0 5px 15px rgba(0,0,0,.1);
     position:relative;
+  min-width:100%;
+    flex-shrink:0;
+     box-sizing:border-box;
+    padding:20px;
 }
 
 .gallery-item.active{
@@ -2337,30 +2306,30 @@ function toggleContent(id, button) {
     }
 }
    </script>
-      <script>
-document.addEventListener("DOMContentLoaded", () => {
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    const items = document.querySelectorAll("#destinationRotator .gallery-item");
-    let currentIndex = 0;
+    const gallery = document.querySelector("#destinationRotator .gallery");
+    const slides = document.querySelectorAll("#destinationRotator .gallery-item");
 
-    function showItem(index){
+    let currentSlide = 0;
 
-        items.forEach(item=>{
-            item.classList.remove("active");
-        });
-
-        items[index].classList.add("active");
+    function showSlide() {
+        gallery.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
 
-    showItem(currentIndex);
+    function nextSlide() {
+        currentSlide++;
 
-    setInterval(()=>{
-        currentIndex++;
-        if(currentIndex >= items.length){
-            currentIndex = 0;
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
         }
-        showItem(currentIndex);
-    },5000);
+
+        showSlide();
+    }
+
+    showSlide();
+    setInterval(nextSlide, 5000);
 
 });
 </script>
