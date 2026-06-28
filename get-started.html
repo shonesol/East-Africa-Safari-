@@ -6,7 +6,6 @@
 <title>Get Started - Brendava Tours & Travel</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
@@ -17,6 +16,7 @@ body{
     color:#333;
 }
 
+/* HEADER */
 header{
     background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
     url('IMG_0566.jpeg');
@@ -35,20 +35,14 @@ nav{
     padding:20px 40px;
 }
 
-.nav-buttons a{
-    text-decoration:none;
-    padding:10px 18px;
-    border-radius:8px;
-    font-weight:700;
-}
-
-.home-btn{background:#25D366;color:white;}
-.get-started{background:#0F766E;color:white;}
+.home-btn{background:#25D366;color:white;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;}
+.get-started{background:#0F766E;color:white;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;}
 
 .hero{text-align:center;margin-bottom:60px;}
 .hero h1{font-size:48px;font-weight:800;}
 .hero p{font-size:18px;margin-top:10px;}
 
+/* FORM */
 .booking{
     max-width:1000px;
     margin:50px auto;
@@ -63,8 +57,6 @@ form{
     grid-template-columns:1fr 1fr;
     gap:15px;
 }
-
-.field{display:flex;flex-direction:column;}
 
 input, select, textarea{
     padding:12px;
@@ -88,6 +80,7 @@ button{
 
 button:hover{background:#115E59;}
 
+/* POPUP */
 #popup{
 position:fixed;
 top:50%;
@@ -108,12 +101,8 @@ z-index:9999;
 
 <header>
 <nav>
-    <div class="nav-buttons">
-        <a href="index.html" class="home-btn">⬅ Go Home</a>
-    </div>
-    <div class="nav-buttons">
-        <a href="#" class="get-started">Get Started</a>
-    </div>
+    <a href="index.html" class="home-btn">⬅ Go Home</a>
+    <a href="#" class="get-started">Get Started</a>
 </nav>
 
 <div class="hero">
@@ -132,8 +121,8 @@ z-index:9999;
 <input type="text" id="phone" placeholder="Phone" required>
 <input type="text" id="country" placeholder="Country">
 <input type="text" id="destination" placeholder="Destination">
-<input type="date" id="arrival" placeholder="Arrival">
-<input type="date" id="departure" placeholder="Departure">
+<input type="date" id="arrival">
+<input type="date" id="departure">
 <input type="number" id="clients" placeholder="Clients">
 <input type="number" id="days" placeholder="Days">
 
@@ -142,19 +131,8 @@ z-index:9999;
     <option>Serengeti</option>
     <option>Queen Elizabeth</option>
     <option>Murchison Falls</option>
-       <option>semuliki</option>
-    <option>kidepo</option>
-    <option>volcanoes</option>
-    <option>nyerere</option>
-       <option>bwindi</option>
-    <option>kibale</option>
-    <option>rwenzori</option>
-    <option>mgahinga</option>
-       <option>akagera</option>
-    <option>elgon</option>
-    <option>culture</option>
-    <option>city tour</option>
-        <option>others</option>
+    <option>Bwindi</option>
+    <option>Kidepo</option>
 </select>
 
 <textarea id="message" placeholder="Message"></textarea>
@@ -166,66 +144,96 @@ z-index:9999;
 
 <div id="popup">Booking Sent Successfully!</div>
 
-<script>
+<script type="module">
+
 // TEXT CHANGER
-const texts=[
+const texts = [
 "DISCOVER EAST AFRICA",
 "EXPLORE WILDLIFE",
 "LUXURY SAFARIS",
 "YOUR JOURNEY STARTS HERE"
 ];
 
-let i=0;
-setInterval(()=>{
-i=(i+1)%texts.length;
-document.getElementById("changingText").innerText=texts[i];
-},4000);
+let i = 0;
+setInterval(() => {
+i = (i + 1) % texts.length;
+document.getElementById("changingText").innerText = texts[i];
+}, 4000);
 
-// EMAILJS INIT (FIXED)
+// EMAILJS INIT
 emailjs.init("pA1qeAlZDgevk8-It");
 
-// FORM SUBMIT
-const form=document.getElementById("bookingForm");
-const popup=document.getElementById("popup");
 
-form.addEventListener("submit",async(e)=>{
-e.preventDefault();
+// FIREBASE IMPORTS
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const data={
-name:document.getElementById("name").value,
-email:document.getElementById("email").value,
-phone:document.getElementById("phone").value,
-country:document.getElementById("country").value,
-destination:document.getElementById("destination").value,
-arrival:document.getElementById("arrival").value,
-departure:document.getElementById("departure").value,
-clients:document.getElementById("clients").value,
-days:document.getElementById("days").value,
-parks:[...document.getElementById("parks").selectedOptions].map(o=>o.value).join(", "),
-message:document.getElementById("message").value
+
+// FIREBASE CONFIG
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY_HERE",
+  authDomain: "brendava-tours-and-travel.firebaseapp.com",
+  projectId: "brendava-tours-and-travel",
+  storageBucket: "brendava-tours-and-travel.firebasestorage.app",
+  messagingSenderId: "732703885570",
+  appId: "1:732703885570:web:3011a3989d5fe36eb69a1b",
+  measurementId: "G-ZC356HMW9C"
 };
 
-try{
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const res = await emailjs.send(
+
+// FORM SUBMIT
+const form = document.getElementById("bookingForm");
+const popup = document.getElementById("popup");
+
+form.addEventListener("submit", async (e) => {
+e.preventDefault();
+
+const data = {
+name: document.getElementById("name").value,
+email: document.getElementById("email").value,
+phone: document.getElementById("phone").value,
+country: document.getElementById("country").value,
+destination: document.getElementById("destination").value,
+arrival: document.getElementById("arrival").value,
+departure: document.getElementById("departure").value,
+clients: document.getElementById("clients").value,
+days: document.getElementById("days").value,
+parks: [...document.getElementById("parks").selectedOptions].map(o => o.value).join(", "),
+message: document.getElementById("message").value
+};
+
+try {
+
+// SAVE TO FIREBASE
+await addDoc(collection(db, "bookings"), {
+  ...data,
+  createdAt: new Date()
+});
+
+// SEND EMAIL
+await emailjs.send(
 "service_1hlp5ii",
 "template_vs01t7d",
 data
 );
 
-console.log("Email sent:", res.status, res.text);
-
-popup.style.display="block";
-setTimeout(()=>popup.style.display="none",3000);
+// POPUP
+popup.style.display = "block";
+setTimeout(() => popup.style.display = "none", 3000);
 
 form.reset();
 
-}catch(err){
-console.error("FAILED:", err);
-alert("Email failed. Check console.");
+} catch (err) {
+console.error(err);
+alert("Booking failed. Try again.");
 }
 
 });
+
 </script>
 
 </body>
