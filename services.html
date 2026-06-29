@@ -135,9 +135,9 @@
     top:0;
     left:0;
     width:0%;
-    height:4px;
+    height:6px;
     background:#ffc107;
-    z-index:1000;
+    z-index:9999;
 }
 
     </style>
@@ -181,6 +181,7 @@ Book Now
 </div>
 
 </div>
+    </div>
     <script>
 // ======================================
 // Brendava Tours & Travel Slider Script
@@ -305,39 +306,40 @@ document.addEventListener("DOMContentLoaded", function () {
     // Optional Progress Bar
     // ----------------------------
 
-    const progressBar = document.querySelector(".slider-progress");
+    // ----------------------------
+// Slider Progress Bar
+// ----------------------------
 
-    if (progressBar) {
+const progressBar = document.querySelector(".slider-progress");
 
-        function startProgress() {
+if(progressBar){
 
-            progressBar.style.transition = "none";
-            progressBar.style.width = "0%";
+    function startProgress(){
 
-            setTimeout(() => {
+        progressBar.style.transition = "none";
+        progressBar.style.width = "0%";
 
-                progressBar.style.transition = "width 5s linear";
-                progressBar.style.width = "100%";
+        setTimeout(()=>{
 
-            }, 50);
+            progressBar.style.transition = "width 5s linear";
+            progressBar.style.width = "100%";
 
-        }
-
-        startProgress();
-
-        slider.addEventListener("slide.bs.carousel", function () {
-
-            startProgress();
-
-        });
+        },100);
 
     }
 
-    // ----------------------------
-    // Console Message
-    // ----------------------------
 
-    console.log("Brendava Tours & Travel Slider Loaded Successfully");
+    // Start when page loads
+    startProgress();
 
-});
-</script>
+
+    // Restart every time slide changes
+    slider.addEventListener("slid.bs.carousel", function(){
+
+        startProgress();
+
+    });
+
+}
+    </script>
+
