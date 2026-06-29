@@ -1264,7 +1264,7 @@ function toggle(id, btn){
 </script>
 <!-- REVIEWS (FIREBASE - UNCHANGED) -->
 <section id="reviews-section">
-<h2>Customer Reviews</h2>
+<h2 data-lang="reviews_title">Customer Reviews</h2>
 
 <input type="text" id="reviewName" placeholder="Your Name">
 <select id="reviewRating">
@@ -1455,8 +1455,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- BOOKING FORM -->
 <section id="booking">
-<h2>Safari Booking</h2>
-
+<h2 id="bookingTitle" data-lang="booking_title">Safari Booking</h2>
+<button type="submit" class="btn" data-lang="send_booking">
+  Send Booking
+</button>
 <form id="bookingForm">
     <input type="hidden" name="to_email" value="brendavatoursandtravel@gmail.com">
 <input type="text" name="name" placeholder="Full Name" required>
@@ -1559,32 +1561,46 @@ window.addEventListener("load", function () {
 });
 </script>
       <script>
+        
       const translations = {
   en: {
     site_name: "Brendava Tours & Travel",
-    welcome: "Welcome to Brendava Tours & Travel",
-    about: "We offer unforgettable safari experiences across East Africa.",
-    safaris: "Our Safaris",
-    gallery: "Photo Gallery",
-    contact: "Contact Us"
+    hero_title: "Discover East Africa",
+    hero_subtitle: "Uganda • Kenya • Tanzania • Rwanda",
+    plan_safari: "Plan Your Safari",
+    booking_title: "Safari Booking",
+    send_booking: "Send Booking",
+    reviews_title: "Customer Reviews"
   },
 
   fr: {
     site_name: "Brendava Tours & Voyage",
-    welcome: "Bienvenue chez Brendava Tours & Voyage",
-    about: "Nous offrons des safaris inoubliables en Afrique de l'Est.",
-    safaris: "Nos Safaris",
-    gallery: "Galerie Photos",
-    contact: "Contactez-nous"
+    hero_title: "Découvrez l'Afrique de l'Est",
+    hero_subtitle: "Ouganda • Kenya • Tanzanie • Rwanda",
+    plan_safari: "Planifiez votre safari",
+    booking_title: "Réservation de safari",
+    send_booking: "Envoyer la réservation",
+    reviews_title: "Avis des clients"
   },
 
   es: {
     site_name: "Brendava Tours y Viajes",
-    welcome: "Bienvenido a Brendava Tours y Viajes",
-    about: "Ofrecemos safaris inolvidables en África Oriental.",
-    safaris: "Nuestros Safaris",
-    gallery: "Galería de Fotos",
-    contact: "Contáctanos"
+    hero_title: "Descubre África Oriental",
+    hero_subtitle: "Uganda • Kenia • Tanzania • Ruanda",
+    plan_safari: "Planifica tu safari",
+    booking_title: "Reserva de safari",
+    send_booking: "Enviar reserva",
+    reviews_title: "Reseñas de clientes"
+  },
+
+  de: {
+    site_name: "Brendava Touren & Reisen",
+    hero_title: "Entdecke Ostafrika",
+    hero_subtitle: "Uganda • Kenia • Tansania • Ruanda",
+    plan_safari: "Safari planen",
+    booking_title: "Safari-Buchung",
+    send_booking: "Buchung senden",
+    reviews_title: "Kundenbewertungen"
   }
 };
 
@@ -1592,11 +1608,16 @@ window.addEventListener("load", function () {
 function applyLanguage(lang) {
   document.querySelectorAll("[data-lang]").forEach(el => {
     const key = el.getAttribute("data-lang");
+
     if (translations[lang] && translations[lang][key]) {
       el.innerText = translations[lang][key];
     }
   });
 
+  // also update page title dynamically
+  document.title = translations[lang].site_name;
+
+  // save preference
   localStorage.setItem("brendava_lang", lang);
 }
 
