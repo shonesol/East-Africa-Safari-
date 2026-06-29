@@ -182,164 +182,171 @@ Book Now
 
 </div>
     </div>
-    <script>
-// ======================================
-// Brendava Tours & Travel Slider Script
-// ======================================
+    <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-document.addEventListener("DOMContentLoaded", function () {
+<script>
 
-    const slider = document.getElementById("heroSlider");
+document.addEventListener("DOMContentLoaded", function(){
 
-    if (!slider) return;
+const slider = document.getElementById("heroSlider");
 
-    // Initialize Bootstrap Carousel
-    const carousel = new bootstrap.Carousel(slider, {
-        interval: 5000,
-        ride: "carousel",
-        pause: false,
-        wrap: true,
-        touch: true
-    });
-
-    // ----------------------------
-    // Animate Active Slide
-    // ----------------------------
-
-    function animateSlide(slide) {
-
-        const content = slide.querySelector(".slide-content");
-
-        if (!content) return;
-
-        content.style.opacity = "0";
-        content.style.transform = "translateY(40px)";
-
-        setTimeout(() => {
-            content.style.transition = "all .8s ease";
-            content.style.opacity = "1";
-            content.style.transform = "translateY(0)";
-        }, 150);
-
-    }
-
-    // Animate first slide
-    const firstSlide = slider.querySelector(".carousel-item.active");
-
-    animateSlide(firstSlide);
-
-    // Animate every slide
-    slider.addEventListener("slid.bs.carousel", function (event) {
-
-        animateSlide(event.relatedTarget);
-
-    });
-
-    // ----------------------------
-    // Pause On Hover
-    // ----------------------------
-
-    slider.addEventListener("mouseenter", function () {
-
-        carousel.pause();
-
-    });
-
-    slider.addEventListener("mouseleave", function () {
-
-        carousel.cycle();
-
-    });
-
-    // ----------------------------
-    // Keyboard Navigation
-    // ----------------------------
-
-    document.addEventListener("keydown", function (event) {
-
-        if (event.key === "ArrowLeft") {
-
-            carousel.prev();
-
-        }
-
-        if (event.key === "ArrowRight") {
-
-            carousel.next();
-
-        }
-
-    });
-
-    // ----------------------------
-    // Touch Swipe (Extra Support)
-    // ----------------------------
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    slider.addEventListener("touchstart", function (event) {
-
-        touchStartX = event.changedTouches[0].screenX;
-
-    });
-
-    slider.addEventListener("touchend", function (event) {
-
-        touchEndX = event.changedTouches[0].screenX;
-
-        if (touchEndX < touchStartX - 50) {
-
-            carousel.next();
-
-        }
-
-        if (touchEndX > touchStartX + 50) {
-
-            carousel.prev();
-
-        }
-
-    });
-
-    // ----------------------------
-    // Optional Progress Bar
-    // ----------------------------
-
-    // ----------------------------
-// Slider Progress Bar
-// ----------------------------
-
-const progressBar = document.querySelector(".slider-progress");
-
-if(progressBar){
-
-    function startProgress(){
-
-        progressBar.style.transition = "none";
-        progressBar.style.width = "0%";
-
-        setTimeout(()=>{
-
-            progressBar.style.transition = "width 5s linear";
-            progressBar.style.width = "100%";
-
-        },100);
-
-    }
+if(!slider) return;
 
 
-    // Start when page loads
-    startProgress();
+// Bootstrap Carousel
+const carousel = new bootstrap.Carousel(slider,{
+    interval:5000,
+    ride:"carousel",
+    pause:false,
+    wrap:true,
+    touch:true
+});
 
 
-    // Restart every time slide changes
-    slider.addEventListener("slid.bs.carousel", function(){
+// Slide animation
 
-        startProgress();
+function animateSlide(slide){
 
-    });
+const content = slide.querySelector(".slide-content");
+
+if(!content) return;
+
+
+content.style.opacity="0";
+content.style.transform="translateY(40px)";
+
+
+setTimeout(()=>{
+
+content.style.transition="all .8s ease";
+content.style.opacity="1";
+content.style.transform="translateY(0)";
+
+},150);
 
 }
-    </script>
 
+
+// First slide
+
+animateSlide(
+slider.querySelector(".carousel-item.active")
+);
+
+
+// Every slide change
+
+slider.addEventListener(
+"slid.bs.carousel",
+function(e){
+
+animateSlide(e.relatedTarget);
+startProgress();
+
+});
+
+
+
+// Pause hover
+
+slider.addEventListener(
+"mouseenter",
+()=>carousel.pause()
+);
+
+
+slider.addEventListener(
+"mouseleave",
+()=>carousel.cycle()
+);
+
+
+
+// Keyboard
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="ArrowLeft"){
+carousel.prev();
+}
+
+if(e.key==="ArrowRight"){
+carousel.next();
+}
+
+});
+
+
+
+// Swipe
+
+let startX=0;
+
+slider.addEventListener(
+"touchstart",
+e=>{
+startX=e.changedTouches[0].screenX;
+});
+
+
+slider.addEventListener(
+"touchend",
+e=>{
+
+let endX=e.changedTouches[0].screenX;
+
+
+if(endX < startX-50){
+carousel.next();
+}
+
+
+if(endX > startX+50){
+carousel.prev();
+}
+
+
+});
+
+
+
+// Progress bar
+
+const progress =
+document.querySelector(".slider-progress");
+
+
+function startProgress(){
+
+if(!progress) return;
+
+
+progress.style.transition="none";
+progress.style.width="0%";
+
+
+setTimeout(()=>{
+
+progress.style.transition=
+"width 5s linear";
+
+progress.style.width="100%";
+
+
+},100);
+
+}
+
+
+startProgress();
+
+
+});
+
+</script>
+
+</body>
+</html>
