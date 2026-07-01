@@ -371,8 +371,33 @@ footer{
 <footer>
 © 2026 Brendava Tours and Travel
 </footer>
+<script>
+// ===== SCROLL ANIMATION =====
+const parks = document.querySelectorAll('.park');
+const lodges = document.querySelectorAll('.lodge');
 
+function showOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
 
+    parks.forEach(p => {
+        const top = p.getBoundingClientRect().top;
+        if(top < triggerBottom) {
+            p.classList.add('show');
+
+            // animate lodges inside
+            let items = p.querySelectorAll('.lodge');
+            items.forEach((l, i) => {
+                setTimeout(() => {
+                    l.classList.add('show');
+                }, i * 150);
+            });
+        }
+    });
+}
+
+window.addEventListener('scroll', showOnScroll);
+window.addEventListener('load', showOnScroll);
+</script>
 
 </body>
 </html>
